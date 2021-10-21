@@ -1,0 +1,24 @@
+{
+  "name": "nodejs-funix",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {},
+  "devDependencies": {
+    "nodemon": "^2.0.14"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server" : "nodemon ./app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/phongtran11/NodeJS-Funnix.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/phongtran11/NodeJS-Funnix/issues"
+  },
+  "homepage": "https://github.com/phongtran11/NodeJS-Funnix#readme"
+}
