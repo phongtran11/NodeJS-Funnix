@@ -8,6 +8,11 @@ app.use('/',(req, res, next) => {
 
 app.use('/add-product',(req, res, next) => {
     console.log('Another middleware');
+    res.send('<h1>The Add product page</h1>');
+})
+
+app.use('/',(req, res, next) => {
+    console.log('middleware');
     res.send('<h1>Hello World</h1>');
 })
 
