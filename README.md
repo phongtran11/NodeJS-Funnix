@@ -1,1 +1,1 @@
-This repostory is learning about NODJS form Funix
+This repostory is learning about NODEJS form Funix
