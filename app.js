@@ -6,8 +6,8 @@ const shopRouter = require('./router/shop');
 
 app.use(bodyParser.urlencoded({extended: true})) ;
 
+app.use('/admin',adminRouter);
 app.use(shopRouter);
-app.use(adminRouter);
 
 app.use((req, res) => {
     res.status(404).send('<h1>Page Not Found</h1>')
