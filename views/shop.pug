@@ -1,13 +1,13 @@
 extends layouts/main-layout.pug
 
-block style
+block styles
     link(rel="stylesheet", href="/css/product.css")
 
 block content
     main
-        if products.length > 0
+        if prods.length > 0
             .grid
-                each product in products
+                each product in prods
                     article.card.product-item
                         header.card__header
                             h1.product__title #{product.title}
