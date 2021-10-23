@@ -18,7 +18,7 @@ app.use(shopRouter);
 app.use((req, res) => {
     res.status(404);
     console.log("404")
-    res.render('404', {pageTitle: 'Page not found'});
+    res.render('404', {pageTitle: 'Page not found', path: ''});
 })
 
 app.listen(3000, console.log(`App running at http://localhost:3000`));
