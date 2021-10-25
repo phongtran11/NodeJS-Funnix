@@ -1,6 +1,6 @@
-const products = []
-
+const Product = require('../models/products');
 class ProductControllers {
+    // GET /admin/add-product
     getAddProduct = (req, res, next) => {
         res.render('add-product', {
             pageTitle: 'Add product',
@@ -8,12 +8,16 @@ class ProductControllers {
         });
     };
 
+    // POST /admin/products/
     postAddProduct = (req, res, next) => {
-            products.push({title: req.body.title});
-            res.redirect('/');
+        const product =  new Product(req.body.title)
+        product.save();
+        res.redirect('/');
     };
 
+    // GET /
     getProduct = (req, res, next) => {
+        const products = Product.fetchAll();
         res.render('shop', {
             prods : products,
             pageTitle: 'Shop',
