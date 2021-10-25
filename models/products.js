@@ -12,7 +12,6 @@ module.exports = class Product {
             'data',
             'product.json'
         );
-            console.log(this.title)
         fs.readFile(p, (err, fileContent) => {
             let products = [];
             if (!err) {
@@ -25,7 +24,7 @@ module.exports = class Product {
         });
     };
 
-    static fetchAll() {
+    static fetchAll(callback) {
         const p = path.join(
             path.dirname(process.mainModule.filename),
             'data',
@@ -33,9 +32,9 @@ module.exports = class Product {
         );
         fs.readFile(p, (err, fileContent) => {
             if (err) { 
-                return  []
+                callback([])
             }
-            return JSON.parse(fileContent);
+            callback(JSON.parse(fileContent)) ;
         });
     };
 };
