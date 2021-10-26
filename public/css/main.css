@@ -15,20 +15,8 @@ main {
     margin: auto;
 }
 
-form {
-    display: inline;
-}
-
-label {
-    display: block;
-}
-
-input {
-    width: 100%;
-}
-
-textarea {
-    width: 100%;
+.centered {
+    text-align: center;
 }
 
 .main-header {
