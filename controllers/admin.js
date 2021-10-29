@@ -21,7 +21,7 @@ exports.postAddProduct = (req, res, next) => {
     description,
   })
   .then(product => {
-    console.log(produc);
+    console.log(product);
   })
   .catch(err => {console.log(err)});
 };
