@@ -15,21 +15,41 @@ const sequelize = require('./util/database');
 const Product = require('./models/product');
 const User = require('./models/user');
 
-
-Product.belongsTo(User, {constraints: true, onDelete: 'CASCADE'});
-User.hasMany(Product);
-
-sequelize.sync({force: true})
-.then(result => {console.log(result)})
-.catch(err => {console.log(err)})
-
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use((req, res, next) => {
+    User.findByPk(1)
+        .then(user => {
+            req.user = user;
+            next();
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+})
 
 app.use('/admin', adminRoutes);
 app.use(shopRoutes);
 
 app.use(errorController.get404);
 
-app.listen(3000);
 
+Product.belongsTo(User, {constraints: true, onDelete: 'CASCADE'});
+User.hasMany(Product);
+
+sequelize.sync()
+.then(result => {
+    return User.findByPk(1);
+})
+.then (user => {
+    if (!user) {
+       return User.create({name: 'max', email: 'max@email.com'})
+    }
+    return user
+})
+
+.then(user => {
+    app.listen(3000, console.log('App is running'));
+})
+.catch(err => {console.log(err)})
