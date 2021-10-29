@@ -11,11 +11,15 @@ app.set('view engine', 'ejs');
 app.set('views', 'views');
 const adminRoutes = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
-const {testConection, sequelize} = require('./util/database');
+const sequelize = require('./util/database');
+const Product = require('./models/product');
+const User = require('./models/user');
 
-testConection();
 
-sequelize.sync()
+Product.belongsTo(User, {constraints: true, onDelete: 'CASCADE'});
+User.hasMany(Product);
+
+sequelize.sync({force: true})
 .then(result => {console.log(result)})
 .catch(err => {console.log(err)})
 
