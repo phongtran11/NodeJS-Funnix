@@ -54,11 +54,11 @@ sequelize
         }
         return user;
     })
-    .then((user) => {
-        return user.createCart();
-    })
-    .then((user) => {
-        app.listen(3001, console.log('App is running'));
+    // .then((user) => {
+    //     return user.createCart();
+    // })
+    .then((cart) => {
+        app.listen(3000, console.log('App is running'));
     })
     .catch((err) => {
         console.log(err);
