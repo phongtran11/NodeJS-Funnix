@@ -84,7 +84,6 @@ exports.postDeleteProduct = (req, res, next) => {
   const prodId = req.body.productId;
   Product.findByPk(prodId)
   .then(product => {
-    console.log('XOASSSSS')
     return product.destroy(); 
   })
   .then(result => {
