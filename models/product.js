@@ -22,11 +22,7 @@ class Product {
             dbOp = db.collection('products').insertOne(this);
         }
 
-        return dbOp
-            .then((result) => {
-                console.log(result);
-            })
-            .catch((error) => console.log(error));
+        return dbOp.then((result) => {}).catch((error) => console.log(error));
     }
 
     static fetchAll() {
@@ -36,7 +32,6 @@ class Product {
             .find()
             .toArray()
             .then((products) => {
-                console.log(products);
                 return products;
             })
             .catch((error) => {
