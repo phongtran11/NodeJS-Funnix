@@ -62,6 +62,9 @@ exports.getIndex = (req, res, next) => {
 };
 
 exports.getCart = (req, res, next) => {
+    if (req.user.getCart() === null) {
+        return res.redirect('/');
+    }
     req.user
         .getCart()
         .then((products) => {
@@ -91,24 +94,17 @@ exports.postCart = (req, res, next) => {
         });
 };
 
-// exports.postCartDeleteProduct = (req, res, next) => {
-//     const prodId = req.body.productId;
-//     req.user
-//         .getCart()
-//         .then((cart) => {
-//             return cart.getProducts({ where: { id: prodId } });
-//         })
-//         .then((products) => {
-//             const product = products[0];
-//             product.CartItem.destroy();
-//         })
-//         .then(() => {
-//             res.redirect('/cart');
-//         })
-//         .catch((err) => {
-//             console.log(err);
-//         });
-// };
+exports.postCartDeleteProduct = (req, res, next) => {
+    const prodId = req.body.productId;
+    req.user
+        .deleteProductFromCart(prodId)
+        .then(() => {
+            res.redirect('/cart');
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+};
 
 // exports.postOrder = (req, res, next) => {
 //     let fetchedCart;
