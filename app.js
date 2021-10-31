@@ -22,6 +22,6 @@ app.use('/admin', adminRoutes);
 app.use(errorController.get404);
 
 mongoConnect(() => {
-    console.log('DONE');
+    console.log('Ok!!');
     app.listen(3000);
 });
