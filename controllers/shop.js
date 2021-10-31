@@ -62,9 +62,6 @@ exports.getIndex = (req, res, next) => {
 };
 
 exports.getCart = (req, res, next) => {
-    if (req.user.getCart() === null) {
-        return res.redirect('/');
-    }
     req.user
         .getCart()
         .then((products) => {
