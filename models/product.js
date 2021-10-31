@@ -1,3 +1,5 @@
+const getDb = require('../util/database').getDb;
+
 class Product {
     constructor(title, price, description, imageUrl) {
         this.title = title;
@@ -5,6 +7,8 @@ class Product {
         this.description = description;
         this.imageUrl = imageUrl;
     }
+
+    save() {}
 }
 
 const Product = sequelize.define('product', {
