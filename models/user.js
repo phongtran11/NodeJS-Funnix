@@ -1,3 +1,27 @@
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+
+const User = new Schema({
+    name: {
+        type: String,
+        require: true,
+    },
+    email: {
+        type: String,
+        require: true,
+    },
+    cart: {
+        items: [
+            {
+                productId: { type: Schema.Types.ObjectId },
+                quantity: { type: Number, require: true },
+            },
+        ],
+    },
+});
+
+module.exports = mongoose.model('User', User);
+
 // const mongodb = require('mongodb');
 // const getDb = require('../util/database').getDb;
 
