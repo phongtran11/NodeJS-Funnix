@@ -4,17 +4,21 @@ const Schema = mongoose.Schema;
 const User = new Schema({
     name: {
         type: String,
-        require: true,
+        required: true,
     },
     email: {
         type: String,
-        require: true,
+        required: true,
     },
     cart: {
         items: [
             {
-                productId: { type: Schema.Types.ObjectId },
-                quantity: { type: Number, require: true },
+                productId: {
+                    type: Schema.Types.ObjectId,
+                    ref: 'Product',
+                    required: true,
+                },
+                quantity: { type: Number, required: true },
             },
         ],
     },
