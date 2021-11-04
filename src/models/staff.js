@@ -24,6 +24,26 @@ const Staff = new Schema({
         type: String,
         required: true,
     },
+    workTime: [
+        {
+            startTime: { type: Date, default: Date.now() },
+            workPlace: { type: String },
+            working: { type: Boolean },
+            endTime: { type: Date },
+        },
+    ],
 });
+
+Staff.methods.addWorkTime = function (newWorkTime) {
+    if (this.workTime.length < 0) {
+        return this.save();
+    } else {
+        const updateWorkTime = [...this.workTime, newWorkTime];
+        console.log('work time update::', updateWorkTime);
+        this.workTime = updateWorkTime;
+        console.log('new work time:', this.workTime);
+        return this.save();
+    }
+};
 
 module.exports = mongoose.model('Staff', Staff);

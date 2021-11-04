@@ -7,11 +7,13 @@ class AttendaceController {
             .populate({ path: 'staffId', model: Staff })
             .then((infoStart) => {
                 if (infoStart.working) {
-                    res.render('attendace/index', {
+                    res.render('attendace/startForm', {
                         pageTitle: 'Attendace',
                         path: '/attendace',
-                        mode: infoStart.working,
+                        // mode: infoStart.working,
+                        mode: null,
                         infoStart,
+                        staff: null,
                     });
                 }
             })
@@ -36,15 +38,16 @@ class AttendaceController {
     // POST /attendace/start
     postStart(req, res) {
         const workPlace = req.body.workPlace;
-        const startInfo = new Attendace({
-            workPlace,
-            working: true,
-            staffId: req.staff,
-        });
-
-        startInfo
-            .save()
-            .then(() => {
+        req.staff
+            .addWorkTime(
+                (req.staff.workTime = {
+                    workPlace,
+                    working: true,
+                    time: Date.now(),
+                })
+            )
+            .then((result) => {
+                console.log(result);
                 res.redirect('/attendace');
             })
             .catch((error) => {
@@ -54,18 +57,15 @@ class AttendaceController {
 
     // POST /attendace/end
     postEnd(req, res) {
-        const staffId = req.staff.id;
-        const timeEnd = Date.now();
-        const endWork = new Attendace({
-            time: timeEnd,
-            workPlace: null,
-            working: false,
-            staffId,
-        });
-
-        endWork
-            .save()
-            .then(() => {
+        req.staff
+            .addWorkTime(
+                (req.staff.workTime = {
+                    working: false,
+                    endTime: Date.now(),
+                })
+            )
+            .then((result) => {
+                console.log(result);
                 res.redirect('/attendace');
             })
             .catch((error) => {

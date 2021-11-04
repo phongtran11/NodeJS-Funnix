@@ -7,4 +7,5 @@ router.get('/', attendaceController.getIndex);
 router.get('/start', attendaceController.getStart);
 router.post('/start', attendaceController.postStart);
 router.post('/end', attendaceController.postEnd);
+
 module.exports = router;

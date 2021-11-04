@@ -22,30 +22,10 @@ app.set('views', __dirname + '/views');
 
 // Add staff in request
 app.use((req, res, next) => {
-    Staff.findOne()
+    Staff.findOne({ _id: '6183eb25cfafc3d73210a3ff' })
         .then((staff) => {
-            if (!staff) {
-                const newStaff = new Staff({
-                    name: 'Trần Quang Phong',
-                    dOB: new Date(1999, 08, 02),
-                    salaryScale: 1.4,
-                    startDate: new Date(2020, 01, 01),
-                    department: 'IT',
-                    annualLeave: 14,
-                    image: 'https://res.cloudinary.com/diqqf3eq2/image/upload/v1586883417/person-3_ipa0mj.jpg',
-                });
-
-                newStaff.save();
-            } else {
-                Staff.findOne({ _id: '6183c74574e9bd56eb8bd338' })
-                    .then((staff) => {
-                        req.staff = staff;
-                        next();
-                    })
-                    .catch((error) => {
-                        console.log(error);
-                    });
-            }
+            req.staff = staff;
+            next();
         })
         .catch((error) => {
             console.log(error);

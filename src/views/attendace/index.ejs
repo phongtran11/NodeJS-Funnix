@@ -3,16 +3,16 @@
         <%-include ('../includes/attendaceButton.ejs')%>
             <div class="attendace-info">
                 <% if (mode===true) {%>
-                    <h3 class="attendace-info__title">Tên Nhân Viên:</h3>
+                    <h3 class="attendace-info__title">Tên Nhân Viên</h3>
                     <p class="attendace-info__text">
                         <%=infoStart.staffId.name%>
                     </p>
-                    <h3 class="attendace-info__title">Nơi Làm Việc:</h3>
+                    <h3 class="attendace-info__title">Nơi Làm Việc</h3>
                     <p class="attendace-info__text">
                         <%= infoStart.workPlace==='home' ? 'Nhà' : infoStart.workPlace==='company' ? 'Công ty'
                             : 'Khách Hàng' %>
                     </p>
-                    <h3 class="attendace-info__title">Giờ Bắt Đầu:</h3>
+                    <h3 class="attendace-info__title">Giờ Bắt Đầu</h3>
                     <p class="attendace-info__text">
                         <%= infoStart.time.toLocaleString() %>
                     </p>
