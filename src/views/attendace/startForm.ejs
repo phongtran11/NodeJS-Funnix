@@ -1,0 +1,21 @@
+<%- include ('../includes/head.ejs')%>
+    <%- include ('../includes/navbar.ejs')%>
+        <%-include ('../includes/attendaceButton.ejs')%>
+            <div class='form-start__wrapper <%= mode ? ' show-form' : '' %>'>
+                <form class="form-start" action="/attendace/start" method="POST">
+                    <div class="form-control">
+                        <label for="name">Tên Nhân Viên</label>
+                        <input class="input-disabled" disabled type="text" value="<%= staff ? staff.name : '' %>">
+                    </div>
+                    <div class="form-control">
+                        <label for="workPlace">Nơi Làm Việc</label>
+                        <select name="workPlace" id="workPlace">
+                            <option value="home">Nhà</option>
+                            <option value="company">Công Ty</option>
+                            <option value="customer">Khách Hàng</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn-form">Điểm Danh</button>
+                </form>
+            </div>
+            <%- include ('../includes/end.ejs')%>

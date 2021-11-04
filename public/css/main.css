@@ -5,6 +5,7 @@
     --bs-blue: #0d6efd;
     --bs-white: #fff;
     --bs-sliver: #ccc;
+    --bs-blue-transparent: #007bff;
     --bs-blue-transparent: rgb(102 153 204 / 1);
     --bs-bg-transparent: rgb(0, 0, 0, 0.5);
 }
@@ -36,11 +37,6 @@ body {
     background-image: url('https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/v960-ning-30.jpg?w=800&dpr=1&fit=default&crop=default&q=65&vib=3&con=3&usm=15&bg=F4F4F3&ixlib=js-2.2.1&s=63dd5f402645ef52fb7dfb592aec765a');
     background-repeat: no-repeat;
     background-size: cover;
-}
-
-.active {
-    border-radius: 0.4rem;
-    background-color: var(--bs-blue);
 }
 
 .centered {
@@ -199,16 +195,6 @@ body {
     margin-right: 1.2rem;
 }
 
-.attendace-img {
-    position: relative;
-    top: 10rem;
-    text-align: center;
-}
-
-.attendace-img img {
-    width: 350px;
-}
-
 .btn {
     width: 10rem;
     height: 6rem;
@@ -217,6 +203,7 @@ body {
     border: none;
     font-size: 1.2rem;
     font-weight: 500;
+    box-shadow: 1px 2px 2px 1px var(--bs-bg-transparent);
 }
 
 .btn:hover {
@@ -227,7 +214,7 @@ body {
     position: fixed;
     top: 0;
     bottom: 0;
-    display: flex;
+    display: none;
     width: 100%;
     height: 100%;
     background: var(--bs-bg-transparent);
@@ -243,6 +230,19 @@ body {
     width: 40%;
     transform: translateY(-100%);
     background: var(--bs-white);
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.attendace-info {
+    margin: 5rem auto;
+    padding: 1rem;
+    width: 34rem;
+    background: var(--bs-blue-transparent);
+    box-shadow: 1px 2px 2px 1px var(--bs-bg-transparent);
+}
+
+.attendace-info__text {
+    margin-bottom: 1rem;
 }
 
 @media screen and (max-width: 767px) {
@@ -273,10 +273,6 @@ body {
         margin-top: 2rem;
     }
 
-    .attendace-img {
-        display: none;
-    }
-
     .form-start {
         width: 80%;
     }
@@ -293,5 +289,29 @@ body {
 
     .black-drop {
         display: none;
+    }
+}
+
+/* common style */
+.active {
+    border-radius: 0.4rem;
+    background-color: var(--bs-blue);
+}
+
+.show-form {
+    display: block;
+}
+
+.hide-form {
+    display: none;
+}
+
+/* common style */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
     }
 }

@@ -1,39 +1,22 @@
 <%- include ('../includes/head.ejs')%>
     <%- include ('../includes/navbar.ejs')%>
-        <div class="attendace-wrapper">
-            <div class="attendace-form">
-                <form action="/attendace/start" method="GET">
-                    <button class="btn btn-start" type="submit">Điểm Danh</button>
-                </form>
-                <form action="/attendace/end" method="POST">
-                    <button class="btn" type="submit">Kết Thúc Làm</button>
-                </form>
-                <form action="/attendace/annual" method="POST">
-                    <button class="btn" type="submit">Nghỉ Phép</button>
-                </form>
+        <%-include ('../includes/attendaceButton.ejs')%>
+            <div class="attendace-info">
+                <% if (mode===true) {%>
+                    <h3 class="attendace-info__title">Tên Nhân Viên:</h3>
+                    <p class="attendace-info__text">
+                        <%=infoStart.staffId.name%>
+                    </p>
+                    <h3 class="attendace-info__title">Nơi Làm Việc:</h3>
+                    <p class="attendace-info__text">
+                        <%= infoStart.workPlace==='home' ? 'Nhà' : infoStart.workPlace==='company' ? 'Công ty'
+                            : 'Khách Hàng' %>
+                    </p>
+                    <h3 class="attendace-info__title">Giờ Bắt Đầu:</h3>
+                    <p class="attendace-info__text">
+                        <%= infoStart.time.toLocaleString() %>
+                    </p>
+                    <h3 class="attendace-info__title">Chúc Bạn Làm Việc Vui Vẻ</h3>
+                    <% }%>
             </div>
-            <div class="attendace-img">
-                <img src="/image/employee.svg" alt="employee">
-            </div>
-        </div>
-
-        <div class='form-start__wrapper'>
-            <form class="form-start" action="/attendace/start" method="POST">
-                <div class="form-control">
-                    <label for="name">Tên Nhân Viên</label>
-                    <input class="input-disabled" disabled type="text" value="tên nhân viên">
-                </div>
-                <div class="form-control">
-                    <label for="workPlace">Nơi Làm Việc</label>
-                    <select name="workPlace" id="workPlace">
-                        <option value="home">Nhà</option>
-                        <option value="company">Công Ty</option>
-                        <option value="customer">Khách Hàng</option>
-                    </select>
-                </div>
-                <button type="submit" class="btn-form">Điểm Danh</button>
-            </form>
-        </div>
-
-
-        <%- include ('../includes/end.ejs')%>
+            <%- include ('../includes/end.ejs')%>

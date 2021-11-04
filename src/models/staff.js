@@ -4,27 +4,21 @@ const Schema = mongoose.Schema;
 const Staff = new Schema({
     name: {
         type: String,
-        required: true,
     },
     dOB: {
         type: Date,
-        required: true,
     },
     salaryScale: {
         type: Number,
-        required: true,
     },
     startDate: {
         type: Date,
-        required: true,
     },
     department: {
         type: String,
-        required: true,
     },
     annualLeave: {
         type: String,
-        required: true,
     },
     image: {
         type: String,
