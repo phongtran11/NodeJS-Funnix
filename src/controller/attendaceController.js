@@ -1,7 +1,12 @@
+const Staff = require('../models/staff');
+
 class AttendaceController {
     // GET /attendace
-    getView(req, res) {
-        res.sendStatus(200);
+    getIndex(req, res) {
+        res.render('attendace/index', {
+            pageTitle: 'Attendace',
+            path: '/attendace',
+        });
     }
 }
 
