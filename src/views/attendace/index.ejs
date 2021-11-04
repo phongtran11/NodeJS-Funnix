@@ -2,8 +2,8 @@
     <%- include ('../includes/navbar.ejs')%>
         <div class="attendace-wrapper">
             <div class="attendace-form">
-                <form action="/attendace/start" method="POST">
-                    <button class="btn" type="submit">Điểm Danh</button>
+                <form action="/attendace/start" method="GET">
+                    <button class="btn btn-start" type="submit">Điểm Danh</button>
                 </form>
                 <form action="/attendace/end" method="POST">
                     <button class="btn" type="submit">Kết Thúc Làm</button>
@@ -16,5 +16,24 @@
                 <img src="/image/employee.svg" alt="employee">
             </div>
         </div>
+
+        <div class='form-start__wrapper'>
+            <form class="form-start" action="/attendace/start" method="POST">
+                <div class="form-control">
+                    <label for="name">Tên Nhân Viên</label>
+                    <input class="input-disabled" disabled type="text" value="tên nhân viên">
+                </div>
+                <div class="form-control">
+                    <label for="workPlace">Nơi Làm Việc</label>
+                    <select name="workPlace" id="workPlace">
+                        <option value="home">Nhà</option>
+                        <option value="company">Công Ty</option>
+                        <option value="customer">Khách Hàng</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-form">Điểm Danh</button>
+            </form>
+        </div>
+
 
         <%- include ('../includes/end.ejs')%>

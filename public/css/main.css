@@ -6,6 +6,7 @@
     --bs-white: #fff;
     --bs-sliver: #ccc;
     --bs-blue-transparent: rgb(102 153 204 / 1);
+    --bs-bg-transparent: rgb(0, 0, 0, 0.5);
 }
 
 * {
@@ -40,6 +41,52 @@ body {
 .active {
     border-radius: 0.4rem;
     background-color: var(--bs-blue);
+}
+
+.centered {
+    text-align: center;
+}
+
+.btn-form {
+    margin: 1rem auto;
+    padding: 1rem 1.5rem;
+    display: block;
+    width: 16rem;
+    outline: none;
+    border: none;
+    background-color: var(--bs-blue-transparent);
+    cursor: pointer;
+}
+
+.form-control {
+    margin: 1.2rem 2rem;
+}
+
+.form-control label {
+    margin-bottom: 0.6rem;
+    font-weight: 600;
+    color: var(--bs-black);
+}
+
+.form-control label,
+.form-control input,
+.form-control select {
+    display: block;
+}
+
+.form-control input,
+.form-control select {
+    padding: 0.5rem;
+    width: 15rem;
+    height: 2.8rem;
+    border: 1px solid var(--bs-sliver);
+    outline: none;
+}
+
+.form-control .input-disabled {
+    outline: none;
+    border: none;
+    touch-action: none;
 }
 
 .navbar {
@@ -176,6 +223,28 @@ body {
     cursor: pointer;
 }
 
+.form-start__wrapper {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background: var(--bs-bg-transparent);
+    z-index: 5;
+}
+
+.form-start {
+    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    width: 40%;
+    transform: translateY(-100%);
+    background: var(--bs-white);
+}
+
 @media screen and (max-width: 767px) {
     .active {
         background: var(--bs-blue);
@@ -206,6 +275,10 @@ body {
 
     .attendace-img {
         display: none;
+    }
+
+    .form-start {
+        width: 80%;
     }
 }
 
