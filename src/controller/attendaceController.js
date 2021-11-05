@@ -3,34 +3,20 @@ const Attendace = require('../models/attendace');
 class AttendaceController {
     // GET /attendace
     getIndex(req, res) {
-        Attendace.findOne()
-            .populate({ path: 'staffId', model: Staff })
-            .then((infoStart) => {
-                if (infoStart.working) {
-                    res.render('attendace/startForm', {
-                        pageTitle: 'Attendace',
-                        path: '/attendace',
-                        // mode: infoStart.working,
-                        mode: null,
-                        infoStart,
-                        staff: null,
-                    });
-                }
-            })
-            .catch((error) => {
-                console.log(error);
-            });
+        res.render('attendace/startInfo', {
+            path: '/attendace',
+            staff: req.staff,
+        });
     }
 
     // GET /attendace/start
     getStart(req, res) {
         const mode = req.query.mode;
-        const staff = req.staff;
 
         res.render('attendace/startForm', {
             pageTitle: 'Attendace',
             path: '/attendace',
-            staff,
+            staff: req.staff,
             mode,
         });
     }
@@ -38,14 +24,14 @@ class AttendaceController {
     // POST /attendace/start
     postStart(req, res) {
         const workPlace = req.body.workPlace;
+        const newWorkTime = {
+            startTime: Date.now(),
+            workPlace,
+            working: true,
+            endTime: null,
+        };
         req.staff
-            .addWorkTime(
-                (req.staff.workTime = {
-                    workPlace,
-                    working: true,
-                    time: Date.now(),
-                })
-            )
+            .addWorkTime(newWorkTime)
             .then((result) => {
                 console.log(result);
                 res.redirect('/attendace');
@@ -57,13 +43,14 @@ class AttendaceController {
 
     // POST /attendace/end
     postEnd(req, res) {
+        const newWorkTime = {
+            startTime: null,
+            workPlace: null,
+            working: false,
+            endTime: Date.now(),
+        };
         req.staff
-            .addWorkTime(
-                (req.staff.workTime = {
-                    working: false,
-                    endTime: Date.now(),
-                })
-            )
+            .addWorkTime(newWorkTime)
             .then((result) => {
                 console.log(result);
                 res.redirect('/attendace');

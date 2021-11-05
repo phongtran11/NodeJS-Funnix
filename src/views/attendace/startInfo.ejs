@@ -1,22 +1,28 @@
 <%- include ('../includes/head.ejs')%>
     <%- include ('../includes/navbar.ejs')%>
         <%-include ('../includes/attendaceButton.ejs')%>
-            <div class="attendace-info">
-                <% if (mode===true) {%>
+            <!-- calculate last workTime -->
+            <% const lastWorkedList=staff.workTime.filter(workedTime=> {
+                return workedTime.working === true
+                } )
+                const lastWorked = lastWorkedList[lastWorkedList.length-1]
+                %>
+                <!-- calculate last workTime -->
+
+                <div class="attendace-info">
                     <h3 class="attendace-info__title">Tên Nhân Viên</h3>
                     <p class="attendace-info__text">
-                        <%=infoStart.staffId.name%>
+                        <%=staff.name%>
                     </p>
                     <h3 class="attendace-info__title">Nơi Làm Việc</h3>
                     <p class="attendace-info__text">
-                        <%= infoStart.workPlace==='home' ? 'Nhà' : infoStart.workPlace==='company' ? 'Công ty'
+                        <%= lastWorked.workPlace==='home' ? 'Nhà' : lastWorked.workPlace==='company' ? 'Công ty'
                             : 'Khách Hàng' %>
                     </p>
                     <h3 class="attendace-info__title">Giờ Bắt Đầu</h3>
                     <p class="attendace-info__text">
-                        <%= infoStart.time.toLocaleString() %>
+                        <%= lastWorked.startTime.toLocaleString()%>
                     </p>
                     <h3 class="attendace-info__title">Chúc Bạn Làm Việc Vui Vẻ</h3>
-                    <% }%>
-            </div>
-            <%- include ('../includes/end.ejs')%>
+                </div>
+                <%- include ('../includes/end.ejs')%>

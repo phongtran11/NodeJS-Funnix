@@ -1,15 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
+<!-- calculate is working? -->
+<% const lastWorkedList=staff.workTime.filter(workedTime=> {
+    return workedTime.working === true
+    } )
+    const lastWorked = lastWorkedList[lastWorkedList.length-1]
+    %>
+    <!-- calculate is working? -->
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>
-        <%= pageTitle %>
-    </title>
-    <link rel="stylesheet" href="/css/main.css">
-</head>
+    <!DOCTYPE html>
+    <html lang="en">
 
-<body>
-    <div class="app">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>
+            <%= lastWorked.working===true ? 'Info Start' : 'Info End' %>
+        </title>
+        <link rel="stylesheet" href="/css/main.css">
+    </head>
+
+    <body>
+        <div class="app">

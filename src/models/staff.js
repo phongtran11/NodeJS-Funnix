@@ -38,10 +38,9 @@ Staff.methods.addWorkTime = function (newWorkTime) {
     if (this.workTime.length < 0) {
         return this.save();
     } else {
-        const updateWorkTime = [...this.workTime, newWorkTime];
-        console.log('work time update::', updateWorkTime);
+        const updateWorkTime = [...this.workTime];
+        updateWorkTime.push(newWorkTime);
         this.workTime = updateWorkTime;
-        console.log('new work time:', this.workTime);
         return this.save();
     }
 };
