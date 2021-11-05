@@ -1,5 +1,5 @@
 const Staff = require('../models/staff');
-const Attendace = require('../models/attendace');
+
 class AttendaceController {
     // GET /attendace
     getIndex(req, res) {
@@ -10,7 +10,7 @@ class AttendaceController {
     }
 
     // GET /attendace/start
-    getStart(req, res) {
+    getStartWork(req, res) {
         const mode = req.query.mode;
 
         res.render('attendace/startForm', {
@@ -22,7 +22,7 @@ class AttendaceController {
     }
 
     // POST /attendace/start
-    postStart(req, res) {
+    postStartWork(req, res) {
         const workPlace = req.body.workPlace;
         const newWorkTime = {
             startTime: Date.now(),
@@ -42,7 +42,7 @@ class AttendaceController {
     }
 
     // POST /attendace/end
-    postEnd(req, res) {
+    postEndWork(req, res) {
         const newWorkTime = {
             startTime: null,
             workPlace: null,
