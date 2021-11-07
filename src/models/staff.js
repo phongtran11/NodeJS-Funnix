@@ -24,9 +24,9 @@ const Staff = new Schema({
         type: String,
         required: true,
     },
-    workTime: [
+    workTimes: [
         {
-            startTime: { type: Date, default: Date.now() },
+            startTime: { type: Date, default: new Date() },
             workPlace: { type: String },
             working: { type: Boolean },
             endTime: { type: Date },
@@ -34,15 +34,31 @@ const Staff = new Schema({
     ],
 });
 
-Staff.methods.addWorkTime = function (newWorkTime) {
-    if (this.workTime.length < 0) {
+Staff.methods.addWorkTimes = function (newworkTimes) {
+    if (this.workTimes.length < 0) {
         return this.save();
     } else {
-        const updateWorkTime = [...this.workTime];
-        updateWorkTime.push(newWorkTime);
-        this.workTime = updateWorkTime;
+        const updateworkTimes = [...this.workTimes];
+        updateworkTimes.push(newworkTimes);
+        this.workTimes = updateworkTimes;
         return this.save();
     }
 };
+
+Staff.methods.addEndTime = function (newEndTime) {
+    const lastWorkTime = this.workTimes[this.workTimes.length - 1]
+    const updateWorkTime = lastWorkTime.endTime = newEndTime.endTime;
+    // const updateWorkTime = this.workTimes.map(workTime => {
+    //     if(workTime.startTime.getDate() === newEndTime.endTime.getDate()) {
+    //         workTime.endTime = newEndTime.endTime
+    //     }
+    //     else {
+    //         return workTime
+    //     }
+    // })
+
+    this.workTime = updateWorkTime; 
+    return this.save();
+}
 
 module.exports = mongoose.model('Staff', Staff);

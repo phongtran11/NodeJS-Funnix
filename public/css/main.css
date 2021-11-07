@@ -34,9 +34,8 @@ body {
 
 .app {
     height: 100vh;
-    background-image: url('https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/v960-ning-30.jpg?w=800&dpr=1&fit=default&crop=default&q=65&vib=3&con=3&usm=15&bg=F4F4F3&ixlib=js-2.2.1&s=63dd5f402645ef52fb7dfb592aec765a');
-    background-repeat: no-repeat;
-    background-size: cover;
+    padding-bottom: 5rem;
+    background: linear-gradient(#c2dcdd, #9198e5);
 }
 
 .centered {
@@ -186,6 +185,10 @@ body {
     z-index: 3;
 }
 
+.index__title {
+    margin-top: 20rem;
+}
+
 .attendace-form {
     display: flex;
     justify-content: center;
@@ -204,10 +207,12 @@ body {
     font-size: 1.2rem;
     font-weight: 500;
     box-shadow: 1px 2px 2px 1px var(--bs-bg-transparent);
+    transition: all 0.3 ease-in-out;
 }
 
 .btn:hover {
     cursor: pointer;
+    transform: translateY(-10%);
 }
 
 .form-start__wrapper {
@@ -234,7 +239,7 @@ body {
 }
 
 .attendace-info {
-    margin: 5rem auto;
+    margin: 5rem auto 0 auto;
     padding: 1rem;
     width: 34rem;
     background: var(--bs-blue-transparent);
@@ -244,6 +249,18 @@ body {
 .attendace-info__text {
     margin-bottom: 1rem;
 }
+
+.attendace-info__list {
+    padding: 0;
+    list-style: none;
+}
+
+.attendace-info__item {
+    margin-bottom: 1.6rem;
+    padding: .8rem 0;
+}
+
+
 
 @media screen and (max-width: 767px) {
     .active {
@@ -262,12 +279,12 @@ body {
         display: block;
     }
 
-    .attendace-form {
+    /* .attendace-form {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-    }
+    } */
 
     .attendace-form form {
         margin-top: 2rem;
@@ -278,6 +295,14 @@ body {
     }
 }
 
+footer {
+    height: 3.2rem;
+    background: var(--bs-blue-transparent)
+}
+
+footer h3 {
+    line-height: 3.2rem;
+}
 @media screen and (min-width: 768px) {
     .side-menu-toggle {
         display: none;

@@ -1,5 +1,24 @@
 </div>
+</div>
+<footer>
+    <h3 class="centered">Created By NodeJS</h3>
+</footer>
 <script src="/js/main.js"></script>
+<script>
+    if ($('input[name="datetimes"]')) {
+        $(function () {
+            $('input[name="datetimes"]').daterangepicker({
+                timePicker: true,
+                startDate: moment().startOf('hour'),
+                endDate: moment().startOf('hour').add(32, 'hour'),
+                locale: {
+                    format: 'M/DD hh:mm A'
+                }
+            });
+        });
+    }
+
+</script>
 </body>
 
 </html>

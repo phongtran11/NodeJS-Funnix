@@ -1,0 +1,10 @@
+<%- include ('../includes/head.ejs')%>
+    <%- include ('../includes/navbar.ejs')%>
+        <%-include ('../includes/attendanceButton.ejs')%>
+            <div class="centered">
+                <form action="/attendance/info" method="POST">
+                    <input name="date" type="text" name="datetimes" />
+                    <!-- <button type="submit">ok</button> -->
+                </form>
+            </div>
+            <%- include ('../includes/end.ejs')%>

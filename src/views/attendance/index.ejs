@@ -1,0 +1,13 @@
+<%- include ('../includes/head.ejs')%>
+    <%- include ('../includes/navbar.ejs')%>
+        <%-include ('../includes/attendanceButton.ejs')%>
+            <div class="centered">
+                <% if (isStarted) { %>
+                    <h2 class="index__title">Xin Chào!!!</h3>
+                        <p>Bạn Chưa Bắt Đầu. Mời Bạn Chọn Bắt Đầu</p>
+                        <% }else{%>
+                            <h2 class="index__title">Xin Chào!!!</h3>
+                                <p>Bạn đã Bắt Đầu. Mời Bạn Chọn Kết Thúc</p>
+                                <% } %>
+            </div>
+            <%- include ('../includes/end.ejs')%>
