@@ -1,4 +1,13 @@
 class Methods {
+    timeConvert = (time) => {
+        const hours = (time / 60);
+        const rhours = Math.floor(hours);
+        const minutes = (hours - rhours) * 60;
+        const rminutes = Math.round(minutes);
+        return  rhours +  rminutes/100 ;
+        }
+        
+
     calculateTimeWorked =  (staff) =>  {
         let totalTimeWorked = 0;
 
@@ -6,21 +15,19 @@ class Methods {
         const workTimeInDay = staff.workTimes.filter(workTime =>{
             return workTime.startTime.getDate() === workTime.endTime.getDate();
         });
-
-        // calculate Hours work
-        totalTimeWorked =(workTimeInDay[workTimeInDay.length-1].endTime.getHours()) -
-                            (workTimeInDay[0].startTime.getHours());
-
-        // calculate minutes work
+     
         workTimeInDay.forEach(workTime => {
+            // calculate minutes work
             const minutesStart = workTime.startTime.getHours()*60 + workTime.startTime.getMinutes();
             const minutesEnd = workTime.endTime.getHours()*60 + workTime.endTime.getMinutes();
             const minustesCalculate = (minutesEnd - minutesStart)/60;
             
-            return totalTimeWorked = totalTimeWorked + minustesCalculate;
+            // calculate Hours work
+            const hoursWorked =  workTime.endTime.getHours() - workTime.startTime.getHours()
+            return totalTimeWorked = (totalTimeWorked + hoursWorked*60 + minustesCalculate) ;
         })
 
-        return (totalTimeWorked).toFixed(2);
+        return totalTimeWorked;
     };
 
     getLastStart =  (staff) => {
@@ -32,13 +39,18 @@ class Methods {
     };
 
     CheckIsStarted = (staff) => {
-        const workTimeLength = staff.workTimes.length -1;
-        const lastStart = staff.workTimes[workTimeLength];
-        if (lastStart.endTime) {
-            return true;
+        if (staff.workTimes) {
+            const workTimeLength = staff.workTimes.length -1;
+            const lastStart = staff.workTimes[workTimeLength];
+            if (lastStart.endTime) {
+                return false;
+            } else {
+                return true;
+            }
         } else {
             return false;
         }
+      
     };
 }
 

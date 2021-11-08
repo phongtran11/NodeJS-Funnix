@@ -4,7 +4,7 @@ class AttendanceController {
     // GET /
     getIndex(req, res){
         res.render('attendance/index', {
-            path: '/',
+            path: '/attendance',
             pageTitle: 'Attendance',
             isStarted: Methods.CheckIsStarted(req.staff),
         });
@@ -16,6 +16,7 @@ class AttendanceController {
             path: '/attendance',
             pageTitle: 'Attendance',
             staff: req.staff,
+            isStarted: Methods.CheckIsStarted(req.staff),
         });
     }   
 
@@ -68,10 +69,11 @@ class AttendanceController {
 
     // GET /attendance/endInfo
     getInfoEnd(req, res) {
+        const timeWorked =Methods.timeConvert(Methods.calculateTimeWorked(req.staff))
         res.render('attendance/endInfo', {
             path: '/attendance',
             pageTitle: 'Attendance',
-            timeWorked: Methods.calculateTimeWorked(req.staff),
+            timeWorked,
             isStarted: Methods.CheckIsStarted(req.staff),
             staff: req.staff, 
         });
@@ -79,17 +81,28 @@ class AttendanceController {
 
     // GET /attendance/annulLeave
     getLeaveForm(req, res) {
-        res.render('attendance/annualLeaveForm', {
+        res.render('attendance/leaveForm', {
             path: '/attendance',
             pageTitle: 'Attendance',
-            isStarted : Methods.CheckIsStarted(req.staff),
+            isStarted : null,
+            staff: req.staff,
         })
     }
 
     // POST /attendance/info
     postLeaveForm(req, res) {
-        console.log(req.body.date);
-        res.send(200);
+        req.staff
+            .addLeaveInfo({
+                daysLeave: req.body.daysLeave,
+                timesLeave: req.body.hoursLeave,
+                reason: req.body.reason,
+            })
+            .then(() => {
+                res.redirect('/');
+            })
+            .catch(error => {
+                console.log(error);
+            })
     }
 
 }

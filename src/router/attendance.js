@@ -15,7 +15,7 @@ router.post('/end', attendanceController.postEndWork);
 router.get('/endInfo', attendanceController.getInfoEnd);
 
 // annualLeave Router
-router.get('/annualLeave',attendanceController.getLeaveForm);
-router.post('/info',attendanceController.postLeaveForm);
+router.get('/leaveForm',attendanceController.getLeaveForm);
+router.post('/leaveForm',attendanceController.postLeaveForm);
 
 module.exports = router;
