@@ -19,7 +19,9 @@
                                 </div>
                                 <div class="form-control">
                                     <label for="hoursLeave">Số Giờ Nghỉ (Tối Đa 8 Giờ) </label>
-                                    <input id="hoursLeave" type="number" max="8" name="hoursLeave" />
+                                    <input id="hoursLeave" type="number"
+                                        max="<%= staff.annualLeave <= 1 ? (staff.annualLeave / 8) : 8 %>"
+                                        name="hoursLeave" />
                                 </div>
                                 <div class="form-control">
                                     <label for="reason">Lý Do</label>

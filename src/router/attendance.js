@@ -3,7 +3,8 @@ const router = express.Router();
 
 const attendanceController = require('../controller/attendanceController');
 
-router.get('/', attendanceController.getIndex)
+// Index 
+router.get('/', attendanceController.getIndex);
 
 // start Work router 
 router.get('/start', attendanceController.getStartWork);
