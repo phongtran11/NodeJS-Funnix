@@ -26,7 +26,7 @@ app.set('views', __dirname + '/views');
 
 // Add staff in request
 app.use((req, res, next) => {
-    Staff.findOne({ _id: '618500c6439fde99b62c5ffd' })
+    Staff.findOne({ _id: '618b8f3443f335b915b976ee' })
         .then((staff) => {
             req.staff = staff;
             next();

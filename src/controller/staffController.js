@@ -1,11 +1,11 @@
 
 class StaffController {
 
-    //  GET /staff
+    //  GET /staff/infoStaff
     getInfoStaff (req, res) {
-        res.render('infoStaff', {
-            path: '/staff',
-            pageTitle:'Staff',
+        res.render('staff/infoStaff', {
+            path: '/staff/infoStaff',
+            pageTitle:'Staff Info',
             isStarted: null,
             staff: req.staff
         })
@@ -21,6 +21,16 @@ class StaffController {
             .catch(error => 
                     console.log(error)
                 )
+    }
+
+    // GET /staff/reference
+    getReference (req, res) {
+        res.render('staff/reference', {
+            path: '/staff/reference',
+            pageTitle:'Staff Reference',
+            isStarted: null,
+            staff: req.staff,
+        })
     }
 }
 

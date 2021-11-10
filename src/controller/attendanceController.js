@@ -84,7 +84,6 @@ class AttendanceController {
         res.render('attendance/leaveForm', {
             path: '/attendance',
             pageTitle: 'Attendance',
-            isStarted : null,
             staff: req.staff,
         })
     }

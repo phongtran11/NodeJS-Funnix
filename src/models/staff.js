@@ -29,7 +29,7 @@ const Staff = new Schema({
             startTime: { type: Date, default: new Date() },
             workPlace: { type: String },
             working: { type: Boolean },
-            endTime: { type: Date },
+            endTime: { type: Date},
         },
     ],
     leaveInfoList : [
@@ -37,6 +37,31 @@ const Staff = new Schema({
             daysLeave : {type: String},
             timesLeave: {type: Number},
             reason: {type: String},
+        }
+    ],
+    bodyTemperature: [
+        {
+            temperature: {
+                type: Number
+            },
+            date: {
+                type: Date,
+            },
+            time: {
+                type: String,
+            }
+        }
+    ],
+    vaccineInfo: [
+        {
+            nameVaccine: {type: String},
+            date: {type: Date}
+        },
+    ],
+    infectCovidInfo: [
+        {
+            datePositive: {type: Date},
+            dateRecover: {type: Date},
         }
     ]
 });
@@ -82,5 +107,15 @@ Staff.methods.addLeaveInfo = function (newleaveInfo) {
     this.leaveInfoList = updatedLeaveInfoList;
     return this.save();
 }
+
+Staff.methods.addInject = function (firstInject, secondInject) {
+   
+        const updateVaccineInfo = [...this.vaccineInfo];
+        updateVaccineInfo.push(firstInject);
+        updateVaccineInfo.push(secondInject);
+        this.vaccineInfo = updateVaccineInfo;
+        return this.save();
+}
+
 
 module.exports = mongoose.model('Staff', Staff);

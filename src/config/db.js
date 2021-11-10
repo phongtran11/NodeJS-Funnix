@@ -5,7 +5,7 @@ const Staff = require('../models/staff');
 async function connect() {
     try {
         mongoose.connect(
-            'mongodb+srv://phong:020899Pi@cluster0.eirsr.mongodb.net/employee?authSource=admin&replicaSet=atlas-12dlbs-shard-0&w=majority&readPreference=primary&appname=MongoDB%20Compass&retryWrites=true&ssl=true'
+            'mongodb+srv://phong:020899Pi@cluster0.eirsr.mongodb.net/employee?retryWrites=true&w=majority'
         );
         console.log('Connected to MongoDB');
     } catch (err) {
@@ -26,6 +26,9 @@ Staff.findOne()
                 image: 'https://res.cloudinary.com/diqqf3eq2/image/upload/v1586883417/person-3_ipa0mj.jpg',
                 workTimes: [],
                 listInfoList: [],
+                bodyTemperature: [],
+                vaccineInfo: [],
+                infectCovidInfo: [],
             });
             newStaff.save();
         }

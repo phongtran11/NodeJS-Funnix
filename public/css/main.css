@@ -90,23 +90,6 @@ body {
     font-family: 'Open Sans', sans-serif;
 }
 
-.form-leave {
-    margin: 0 auto;
-    padding: .6rem 1rem;
-    position: absolute;
-    top: 80%;
-    left: 0;
-    right: 0;
-    width: 40%;
-    transform: translateY(-100%);
-    background: var(--bs-white);
-    animation: fadeIn 0.3s ease-in-out;
-}
-
-.form-leave__title {
-    text-align: center;
-}
-
 .navbar {
     margin: 0 1.6rem;
     display: flex;
@@ -261,6 +244,24 @@ body {
     animation: fadeIn 0.3s ease-in-out;
 }
 
+.form-leave {
+    margin: 0 auto;
+    padding: .6rem 1rem;
+    position: absolute;
+    top: 80%;
+    left: 0;
+    right: 0;
+    width: 40%;
+    transform: translateY(-100%);
+    background: var(--bs-blue-transparent);
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+
+.form-leave__title {
+    text-align: center;
+}
+
 .attendace-info {
     margin: 5rem auto 0 auto;
     padding: 1rem;
@@ -312,10 +313,9 @@ body {
 
 .info-staff__img {
     margin-top: 1rem;
-    margin-left: 2.7rem;
     display: block;
-    width: 5rem;
-    height: 5rem;
+    width: 10rem;
+    height: 10rem;
     object-fit: cover;
 }
 
@@ -335,6 +335,42 @@ body {
     border: 1px solid var(--bs-black);
 }
 
+
+.covid-detail__wrapper {
+    margin: 5rem auto;
+    padding: 1rem;
+    width: 30%;
+    background: var(--bs-blue-transparent);
+    box-shadow: 1px 2px 2px 1px var(--bs-bg-transparent);
+}
+
+.covid-detail__title {
+    margin-bottom: .5rem;
+    text-align: center;
+}
+
+.covid-detail__wrapper label {
+    display: block;
+}
+
+.covid-detail__wrapper input {
+    margin-bottom: 1rem;
+}
+
+.covid-detail__wrapper button {
+    margin: 2.3rem auto 0 auto;
+    display: block;
+    width: 7rem;
+    height: 3rem;
+    background: var(--bs-white);
+    border: 1px solid transparent;
+    cursor: pointer;
+}
+
+.covid-detail__wrapper button:hover {
+    border: 1px solid var(--bs-black)
+}
+
 footer {
     height: 3.2rem;
     background: var(--bs-blue-transparent)
@@ -345,6 +381,10 @@ footer h3 {
 }
 
 @media screen and (max-width: 767px) {
+    .app {
+        height: auto;
+    }
+
     .active {
         background: var(--bs-blue);
     }
@@ -366,14 +406,13 @@ footer h3 {
         margin-top: 2rem;
     }
 
+    .info-staff__wrapper,
+    .covid-detail__wrapper,
     .form-leave,
     .form-start {
         width: 80%;
     }
 
-    .info-staff__wrapper {
-        width: 80%;
-    }
 }
 
 @media screen and (min-width: 768px) {

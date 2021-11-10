@@ -39,7 +39,8 @@ class Methods {
     };
 
     CheckIsStarted = (staff) => {
-        if (staff.workTimes) {
+        console.log(staff.workTimes.length)
+        if (staff.workTimes && staff.workTimes.length > 0) {
             const workTimeLength = staff.workTimes.length -1;
             const lastStart = staff.workTimes[workTimeLength];
             if (lastStart.endTime) {
