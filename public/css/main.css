@@ -39,6 +39,7 @@ body {
 }
 
 .centered {
+    height: 100vh;
     text-align: center;
 }
 
@@ -262,6 +263,8 @@ body {
     text-align: center;
 }
 
+
+
 .attendace-info {
     margin: 5rem auto 0 auto;
     padding: 1rem;
@@ -373,7 +376,8 @@ body {
 
 footer {
     height: 3.2rem;
-    background: var(--bs-blue-transparent)
+    background: var(--bs-blue-transparent);
+    text-align: center;
 }
 
 footer h3 {
@@ -401,6 +405,10 @@ footer h3 {
         display: block;
     }
 
+    .form-leave__wrapper,
+    .attendace-wrapper {
+        height: 100vh;
+    }
 
     .attendace-form form {
         margin-top: 2rem;
