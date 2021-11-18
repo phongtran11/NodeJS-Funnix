@@ -32,7 +32,6 @@ class AttendanceController {
         req.staff
             .addWorkTimes(newWorkTimes)
             .then((result) => {
-                console.log(result);
                 res.redirect('/attendance/infoStart');
             })
             .catch((error) => {
@@ -74,6 +73,7 @@ class AttendanceController {
             path: '/attendance',
             pageTitle: 'Attendance',
             timeWorked,
+            workedInDay: Methods.calculateTimeWorked(req.staff),
             isStarted: Methods.CheckIsStarted(req.staff),
             staff: req.staff, 
         });

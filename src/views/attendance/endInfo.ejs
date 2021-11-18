@@ -9,7 +9,7 @@
                 </p>
                 <h3 class="attendace-info__title">Danh sách các lượt bắt đầu, kết thúc:</h3>
                 <ul class="attendace-info__list">
-                    <% staff.workTimes.forEach(workTime=> {%>
+                    <% workedInDay.workTimeInDay.forEach(workTime=> {%>
                         <li class="attendace-info__item">
                             <p>Bắt Đầu: <%=workTime.startTime.toLocaleString()%>
                             </p>

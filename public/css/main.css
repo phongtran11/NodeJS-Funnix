@@ -38,6 +38,25 @@ body {
     background: linear-gradient(#c2dcdd, #9198e5);
 }
 
+.link-btn {
+    margin: 3rem auto 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 10rem;
+    height: 4rem;
+    background: var(--bs-white);
+    color: var(--bs-black);
+    border: 1px solid var(--bs-white);
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.link-btn:hover {
+    border: 1px solid var(--bs-black);
+}
+
 .centered {
     height: 100vh;
     text-align: center;
@@ -339,6 +358,35 @@ body {
 }
 
 
+.referenceStaff__wrapper {
+    margin: 5rem auto;
+    padding: 1rem;
+    width: 40%;
+    background: var(--bs-blue-transparent);
+    box-shadow: 1px 2px 2px 1px var(--bs-bg-transparent);
+}
+
+.referenceStaff__table {
+    width: 100%;
+}
+
+.referenceStaff__table tr{
+    text-align: center;
+}
+
+.referenceStaff__article {
+    margin: 1rem 0;
+}
+
+.referenceStaff__title {
+    margin: 1rem 0;
+    text-align: center;
+}
+
+.referenceStaff__salary {
+    background: #eee;
+}
+
 .covid-detail__wrapper {
     margin: 5rem auto;
     padding: 1rem;
@@ -405,6 +453,10 @@ footer h3 {
         display: block;
     }
 
+    .blank {
+       display: none;
+    }
+
     .form-leave__wrapper,
     .attendace-wrapper {
         height: 100vh;
@@ -412,6 +464,10 @@ footer h3 {
 
     .attendace-form form {
         margin-top: 2rem;
+    }
+
+    .referenceStaff__wrapper {
+        width: 90%;
     }
 
     .info-staff__wrapper,

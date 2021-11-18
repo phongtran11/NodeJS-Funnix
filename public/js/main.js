@@ -35,15 +35,20 @@ if ($('.form-start__wrapper')) {
     }
 }
 
-
-// handle picker date 
+// handle picker date
 if ($('input[name="daysLeave"]')) {
-    $(function() {
+    $(function () {
         $('input[name="daysLeave"]').daterangepicker({
-          timePicker: true,
-          startDate: moment(),
-          endDate: moment(),
+            timePicker: true,
+            startDate: moment(),
+            endDate: moment(),
         });
-      });
+    });
 }
 
+//  handle submit form select month 'reference view'
+if ($('.form-select-month')) {
+    $('.select-month').on('change', function () {
+        $('.form-select-month').submit();
+    });
+}
