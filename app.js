@@ -20,12 +20,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use((req, res, next) => {
-  User.findById('5bab316ce0a7c75f783cb8a8')
-    .then(user => {
-      req.user = user;
-      next();
-    })
-    .catch(err => console.log(err));
+    User.findById('5bab316ce0a7c75f783cb8a8')
+        .then((user) => {
+            req.user = user;
+            next();
+        })
+        .catch((err) => console.log(err));
 });
 
 app.use('/admin', adminRoutes);
@@ -35,24 +35,24 @@ app.use(authRoutes);
 app.use(errorController.get404);
 
 mongoose
-  .connect(
-    'mongodb+srv://maximilian:9u4biljMQc4jjqbe@cluster0-ntrwp.mongodb.net/shop?retryWrites=true'
-  )
-  .then(result => {
-    User.findOne().then(user => {
-      if (!user) {
-        const user = new User({
-          name: 'Max',
-          email: 'max@test.com',
-          cart: {
-            items: []
-          }
+    .connect(
+        'mongodb+srv://phong:020899Pi@cluster0.eirsr.mongodb.net/shop?authSource=admin&replicaSet=atlas-12dlbs-shard-0&w=majority&readPreference=primary&appname=MongoDB%20Compass&retryWrites=true&ssl=true'
+    )
+    .then((result) => {
+        User.findOne().then((user) => {
+            if (!user) {
+                const user = new User({
+                    name: 'Max',
+                    email: 'max@test.com',
+                    cart: {
+                        items: [],
+                    },
+                });
+                user.save();
+            }
         });
-        user.save();
-      }
+        app.listen(3000);
+    })
+    .catch((err) => {
+        console.log(err);
     });
-    app.listen(3000);
-  })
-  .catch(err => {
-    console.log(err);
-  });
