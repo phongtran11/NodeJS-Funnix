@@ -2,7 +2,7 @@ const Methods = require('../utils/Methods');
 
 class AttendanceController {
     // GET /
-    getIndex(req, res){
+    getIndex(req, res) {
         res.render('attendance/index', {
             path: '/attendance',
             pageTitle: 'Attendance',
@@ -18,7 +18,7 @@ class AttendanceController {
             staff: req.staff,
             isStarted: Methods.CheckIsStarted(req.staff),
         });
-    }   
+    }
 
     // POST /attendance/start
     postStartWork(req, res) {
@@ -41,13 +41,13 @@ class AttendanceController {
 
     // GET /attendance/infoStart
     getInfoStart(req, res) {
-                res.render('attendance/startInfo', {
-                    path: '/attendance',
-                    pageTitle: 'Attendance',
-                    lastStart: Methods.getLastStart(req.staff),
-                    isStarted: Methods.CheckIsStarted(req.staff),
-                    staff: req.staff,
-                })
+        res.render('attendance/startInfo', {
+            path: '/attendance',
+            pageTitle: 'Attendance',
+            lastStart: Methods.getLastStart(req.staff),
+            isStarted: Methods.CheckIsStarted(req.staff),
+            staff: req.staff,
+        });
     }
 
     // POST /attendance/end
@@ -68,14 +68,14 @@ class AttendanceController {
 
     // GET /attendance/endInfo
     getInfoEnd(req, res) {
-        const timeWorked =Methods.timeConvert(Methods.calculateTimeWorked(req.staff))
+        const timeWorked = Methods.timeConvert(Methods.calculateTimeWorked(req.staff));
         res.render('attendance/endInfo', {
             path: '/attendance',
             pageTitle: 'Attendance',
             timeWorked,
             workedInDay: Methods.calculateTimeWorked(req.staff),
             isStarted: Methods.CheckIsStarted(req.staff),
-            staff: req.staff, 
+            staff: req.staff,
         });
     }
 
@@ -85,7 +85,7 @@ class AttendanceController {
             path: '/attendance',
             pageTitle: 'Attendance',
             staff: req.staff,
-        })
+        });
     }
 
     // POST /attendance/info
@@ -99,11 +99,10 @@ class AttendanceController {
             .then(() => {
                 res.redirect('/');
             })
-            .catch(error => {
+            .catch((error) => {
                 console.log(error);
-            })
+            });
     }
-
 }
 
 module.exports = new AttendanceController();

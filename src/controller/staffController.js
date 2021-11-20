@@ -27,8 +27,8 @@ class StaffController {
         const salary = Methods.getSalary(req.body.month, req.staff);
 
         res.render('staff/reference', {
-            path: '/staff/infoStaff',
-            pageTitle: 'Staff Info',
+            path: '/staff/reference',
+            pageTitle: 'Reference staff',
             isStarted: null,
             timeWorked, // Worked time in a day
             lastTimeWorked, // total times last worked
@@ -46,8 +46,8 @@ class StaffController {
         const salary = Methods.getSalary(req.body.month, req.staff);
 
         res.render('staff/reference', {
-            path: '/staff/infoStaff',
-            pageTitle: 'Staff Info',
+            path: '/staff/reference',
+            pageTitle: 'Reference staff',
             isStarted: null,
             timeWorked, // Worked time in a day
             lastTimeWorked, // total times last worked

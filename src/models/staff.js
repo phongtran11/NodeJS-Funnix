@@ -29,41 +29,41 @@ const Staff = new Schema({
             startTime: { type: Date, default: new Date() },
             workPlace: { type: String },
             working: { type: Boolean },
-            endTime: { type: Date},
+            endTime: { type: Date },
         },
     ],
-    leaveInfoList : [
+    leaveInfoList: [
         {
-            daysLeave : {type: String},
-            timesLeave: {type: Number},
-            reason: {type: String},
-        }
+            daysLeave: { type: String },
+            timesLeave: { type: Number },
+            reason: { type: String },
+        },
     ],
     bodyTemperature: [
         {
             temperature: {
-                type: Number
+                type: Number,
             },
             date: {
                 type: Date,
             },
             time: {
                 type: String,
-            }
-        }
+            },
+        },
     ],
     vaccineInfo: [
         {
-            nameVaccine: {type: String},
-            date: {type: Date}
+            nameVaccine: { type: String },
+            date: { type: Date },
         },
     ],
     infectCovidInfo: [
         {
-            datePositive: {type: Date},
-            dateRecover: {type: Date},
-        }
-    ]
+            datePositive: { type: Date },
+            dateRecover: { type: Date },
+        },
+    ],
 });
 
 Staff.methods.addWorkTimes = function (newworkTimes) {
@@ -79,43 +79,39 @@ Staff.methods.addWorkTimes = function (newworkTimes) {
 
 Staff.methods.addEndTime = function (newEndTime) {
     if (this.workTimes[this.workTimes.length - 1].endTime === null) {
-        const lastWorkTime = this.workTimes[this.workTimes.length - 1]
-        const updateWorkTime = lastWorkTime.endTime = newEndTime.endTime;
-    
-        this.workTime = updateWorkTime; 
+        const lastWorkTime = this.workTimes[this.workTimes.length - 1];
+        const updateWorkTime = (lastWorkTime.endTime = newEndTime.endTime);
+
+        this.workTime = updateWorkTime;
         return this.save();
     } else {
-        return this.save()
+        return this.save();
     }
-   
-}
+};
 
 Staff.methods.addLeaveInfo = function (newleaveInfo) {
     // update annualLeave
-    const {daysLeave, timesLeave} = newleaveInfo;
-    const singleDayLeave  = daysLeave.split(' ');
+    const { daysLeave, timesLeave } = newleaveInfo;
+    const singleDayLeave = daysLeave.split(' ');
     const daystart = singleDayLeave[0];
     const dayEnd = singleDayLeave[2];
-    const numbOfDayLeave = new Date(dayEnd).getDate()  - new Date(daystart).getDate();
-    const totalTimesLeave = numbOfDayLeave * timesLeave; 
-    
-    this.annualLeave = this.annualLeave - totalTimesLeave/8;
+    const numbOfDayLeave = new Date(dayEnd).getDate() - new Date(daystart).getDate();
+    const totalTimesLeave = numbOfDayLeave * timesLeave;
+    this.annualLeave = this.annualLeave - totalTimesLeave / 8;
 
     // update leaveInfoList
     const updatedLeaveInfoList = [...this.leaveInfoList];
     updatedLeaveInfoList.push(newleaveInfo);
     this.leaveInfoList = updatedLeaveInfoList;
     return this.save();
-}
+};
 
 Staff.methods.addInject = function (firstInject, secondInject) {
-   
-        const updateVaccineInfo = [...this.vaccineInfo];
-        updateVaccineInfo.push(firstInject);
-        updateVaccineInfo.push(secondInject);
-        this.vaccineInfo = updateVaccineInfo;
-        return this.save();
-}
-
+    const updateVaccineInfo = [...this.vaccineInfo];
+    updateVaccineInfo.push(firstInject);
+    updateVaccineInfo.push(secondInject);
+    this.vaccineInfo = updateVaccineInfo;
+    return this.save();
+};
 
 module.exports = mongoose.model('Staff', Staff);
