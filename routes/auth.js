@@ -26,6 +26,12 @@ router.post(
         body('password', 'Enter password only numbers and text at leat 5 characters')
             .isLength({ min: 5 })
             .isAlphanumeric(),
+        body('comfirmPassword').custom((value, { req }) => {
+            if (value !== req.body.password) {
+                throw new Error('Password not math');
+            }
+            return true;
+        }),
     ],
     authController.postSignup
 );
