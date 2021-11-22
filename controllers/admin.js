@@ -120,7 +120,23 @@ exports.postEditProduct = (req, res, next) => {
             console.log('UPDATED PRODUCT!');
             res.redirect('/admin/products');
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+            // return res.status(500).render('admin/edit-product', {
+            //     pageTitle: 'Add Product',
+            //     path: '/admin/Add-product',
+            //     editing: false,
+            //     hasError: true,
+            //     product: {
+            //         title,
+            //         imageUrl,
+            //         price,
+            //         description,
+            //     },
+            //     errorMessage: '',
+            //     validationErrors: [],
+            // });
+            res.redirect('/500');
+        });
 };
 
 exports.getProducts = (req, res, next) => {
