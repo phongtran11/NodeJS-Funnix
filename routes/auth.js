@@ -18,6 +18,7 @@ router.post(
         check('email')
             .isEmail()
             .withMessage('Please enter valid email')
+            .normalizeEmail()
             .custom((value, { req }) => {
                 // if (value === 'test@gmail.com') {
                 //     throw new Error('This email address if forbidden.');
@@ -31,13 +32,17 @@ router.post(
             }),
         body('password', 'Enter password only numbers and text at leat 5 characters')
             .isLength({ min: 5 })
-            .isAlphanumeric(),
-        body('comfirmPassword').custom((value, { req }) => {
-            if (value !== req.body.password) {
-                throw new Error('Password not math');
-            }
-            return true;
-        }),
+            .isAlphanumeric()
+            .trim(),
+
+        body('comfirmPassword')
+            .trim()
+            .custom((value, { req }) => {
+                if (value !== req.body.password) {
+                    throw new Error('Password not math');
+                }
+                return true;
+            }),
     ],
     authController.postSignup
 );
