@@ -48,13 +48,11 @@ exports.postAddProduct = (req, res, next) => {
             hasError: true,
             product: {
                 title,
-                image,
                 price,
-                imageUrl,
                 description,
             },
-            errorMessage: errors.array()[0].msg,
-            validationErrors: errors.array(),
+            errorMessage: 'Attached file is not an image',
+            validationErrors: [],
         });
     }
 
