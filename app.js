@@ -29,7 +29,6 @@ const fileStorage = multer.diskStorage({
     },
 });
 const fileFilter = (req, file, cb) => {
-    console.log(file);
     if (
         file.mimetype === 'image/jpg' ||
         file.mimetype === 'image/png' ||
@@ -51,6 +50,7 @@ const authRoutes = require('./routes/auth');
 app.use(express.urlencoded({ extended: false }));
 app.use(multer({ storage: fileStorage, fileFilter: fileFilter }).single('image'));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use(
     session({
         secret: 'my secret',
