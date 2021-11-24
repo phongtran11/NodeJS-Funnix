@@ -140,7 +140,14 @@ exports.getInvoice = (req, res, next) => {
             res.setHeader('Content-Disposition', 'inline; filename="' + invoiceName + '"');
             pdfDoc.pipe(fs.createWriteStream(invoicePath));
             pdfDoc.pipe(res);
-            pdfDoc.text('hello world');
+            pdfDoc.fontSize(26).text('Inovice', { underline: true });
+            pdfDoc.text('-------');
+            let totalPrice = 0;
+            order.products.forEach((prod) => {
+                totalPrice += prod.quantity * prod.product.price;
+                pdfDoc.text(`${prod.product.title} - ${prod.quantity} x $ ${prod.product.price} `);
+            });
+            pdfDoc.text(`TotalPrice: ${totalPrice}`);
             pdfDoc.end();
             // fs.readFile(invoicePath, (err, data) => {
             //     if (err) {
