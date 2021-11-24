@@ -35,11 +35,11 @@ exports.getProduct = (req, res, next) => {
 };
 
 exports.getIndex = (req, res, next) => {
-    const page = req.query.page;
+    const page = +req.query.page;
     let totalItem;
 
     Product.find()
-        .count()
+        .countDocuments()
         .then((numProd) => {
             totalItem = numProd;
             return Product.find()
@@ -51,7 +51,7 @@ exports.getIndex = (req, res, next) => {
                 prods: products,
                 pageTitle: 'Shop',
                 path: '/',
-                totalProduct: totalItem,
+                currentPage: page,
                 hasNextPage: ITEM_PER_PAGE * page < totalItem,
                 hasPreviousPage: page > 1,
                 nextPage: page + 1,
