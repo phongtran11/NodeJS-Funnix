@@ -1,7 +1,6 @@
 <div class="black-drop"></div>
 <header>
     <nav class="navbar">
-
         <a class="navbar__brand" href="/"><img src="/image/brand.svg" alt="Brand"></a>
         <ul class="navbar__list">
             <li class="navbar__item">
@@ -21,6 +20,18 @@
             </li>
         </ul>
         <button class="side-menu-toggle">Menu</button>
+        <% if (!isAuthenticated) { %>
+            <a href="auth/login" class="<%=path === 'auth/login' ? 'navbar__auth active' : 'navbar__auth' %>">Đăng
+                nhập</a>
+            <%} else {%>
+                <div class="<%=path === 'auth/logout' ? 'navbar__auth active' : 'navbar__auth' %>">
+                    <form action="auth/logout" method="POST">
+                        <input type="hidden" name="_csrf" value="<%=csrfToken%>">
+                        <button type="submit">ĐĂNG XUẤT</button>
+                    </form>
+                </div>
+
+                <%}%>
     </nav>
 </header>
 

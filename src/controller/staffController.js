@@ -15,7 +15,14 @@ class StaffController {
         req.staff.image = req.body.image;
         req.staff
             .save()
-            .then(() => res.redirect('/'))
+            .then(() =>
+                res.render('staff/infoStaff', {
+                    path: '/staff/infoStaff',
+                    pageTitle: 'Staff Info',
+                    isStarted: null,
+                    staff: req.staff,
+                })
+            )
             .catch((error) => console.log(error));
     }
 

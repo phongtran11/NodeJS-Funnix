@@ -62,6 +62,19 @@ body {
     text-align: center;
 }
 
+.btn {
+    margin-top: 1rem;
+    padding: 0.5rem;
+    background: #007bff;
+    border: 1px solid #007bff;
+}
+
+.btn:hover {
+    background: white;
+    border: 1px solid #fff;
+    transition: all 0.3s ease;
+}
+
 .btn-custom-form {
     margin: 1rem auto;
     padding: 1rem 1.5rem;
@@ -81,6 +94,11 @@ body {
     margin-bottom: 0.6rem;
     font-weight: 600;
     color: var(--bs-black);
+}
+
+#password,
+#userName {
+    margin: 0.2rem auto;
 }
 
 .form-control label,
@@ -123,7 +141,7 @@ body {
 }
 
 .navbar__list {
-    margin-left: auto;
+    margin-left: 1rem;
     display: flex;
     align-items: center;
     padding: 0px;
@@ -148,6 +166,37 @@ body {
     font-size: 1.4rem;
     font-weight: 600;
     color: var(--bs-black);
+}
+
+.navbar__auth {
+    margin-left: auto;
+    padding: 0.6rem 1rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--bs-black);
+}
+
+.navbar__auth button {
+    border: none;
+    background: none;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--bs-black);
+    font-family: 'Open Sans', sans-serif;
+    cursor: pointer;
+}
+
+.navbar__auth:hover button {
+    border-radius: 0.4rem;
+    background-color: var(--bs-blue);
+}
+
+.navbar__auth.active,
+.navbar__auth:hover {
+    border-radius: 0.4rem;
+    background-color: var(--bs-blue);
 }
 
 .black-drop {
@@ -266,7 +315,7 @@ body {
 
 .form-leave {
     margin: 0 auto;
-    padding: .6rem 1rem;
+    padding: 0.6rem 1rem;
     position: absolute;
     top: 80%;
     left: 0;
@@ -277,12 +326,9 @@ body {
     animation: fadeIn 0.3s ease-in-out;
 }
 
-
 .form-leave__title {
     text-align: center;
 }
-
-
 
 .attendace-info {
     margin: 5rem auto 0 auto;
@@ -303,7 +349,7 @@ body {
 
 .attendace-info__item {
     margin-bottom: 1.6rem;
-    padding: .8rem 0;
+    padding: 0.8rem 0;
 }
 
 .info-staff__wrapper {
@@ -315,7 +361,7 @@ body {
 }
 
 .info-staff__item {
-    margin-bottom: .8rem;
+    margin-bottom: 0.8rem;
 }
 
 .info-staff__title {
@@ -325,7 +371,7 @@ body {
 
 .info-staff__item i {
     margin-right: 1rem;
-   font-size: 2rem;
+    font-size: 2rem;
 }
 
 .info-staff__item input {
@@ -357,7 +403,6 @@ body {
     border: 1px solid var(--bs-black);
 }
 
-
 .referenceStaff__wrapper {
     margin: 5rem auto;
     padding: 1rem;
@@ -370,7 +415,7 @@ body {
     width: 100%;
 }
 
-.referenceStaff__table tr{
+.referenceStaff__table tr {
     text-align: center;
 }
 
@@ -396,7 +441,7 @@ body {
 }
 
 .covid-detail__title {
-    margin-bottom: .5rem;
+    margin-bottom: 0.5rem;
     text-align: center;
 }
 
@@ -419,7 +464,7 @@ body {
 }
 
 .covid-detail__wrapper button:hover {
-    border: 1px solid var(--bs-black)
+    border: 1px solid var(--bs-black);
 }
 
 footer {
@@ -454,7 +499,7 @@ footer h3 {
     }
 
     .blank {
-       display: none;
+        display: none;
     }
 
     .form-leave__wrapper,
@@ -476,7 +521,6 @@ footer h3 {
     .form-start {
         width: 80%;
     }
-
 }
 
 @media screen and (min-width: 768px) {
@@ -491,7 +535,6 @@ footer h3 {
     .black-drop {
         display: none;
     }
-    
 }
 
 /* common style */

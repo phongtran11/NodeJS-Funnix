@@ -12,6 +12,7 @@
 
                     <label for="dateOfTemperature">Ngày Đo </label>
                     <input id="dateOfTemperature" name="dateOfTemperature" type="date">
+                    <input type="hidden" name="_csrf" value="<%=csrfToken%>">
                     <button type="submit">Đăng Ký</button>
                 </form>
 
@@ -28,6 +29,7 @@
                     <label for="dateOfSecondVaccine">Ngày tiêm</label>
                     <input id="dateOfSecondVaccine" name="dateOfSecondVaccine" type="date">
                     <button type="submit">Đăng Ký</button>
+                    <input type="hidden" name="_csrf" value="<%=csrfToken%>">
                 </form>
             </div>
             <div class="covid-detail__wrapper">
@@ -37,6 +39,7 @@
 
                     <label for="recoverDate">Ngày khỏi bệnh</label>
                     <input id="recoverDate" name="recoverDate" type="date">
+                    <input type="hidden" name="_csrf" value="<%=csrfToken%>">
                     <button type="submit">Đăng Ký</button>
 
                 </form>
