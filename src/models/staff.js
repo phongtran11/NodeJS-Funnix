@@ -5,6 +5,15 @@ const Staff = new Schema({
     name: {
         type: String,
     },
+    userName: {
+        type: String,
+    },
+    password: {
+        type: {},
+    },
+    role: {
+        type: String,
+    },
     dOB: {
         type: Date,
     },

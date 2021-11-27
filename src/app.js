@@ -3,6 +3,7 @@ const app = express();
 const csrf = require('csurf');
 const session = require('express-session');
 const mongodbStore = require('connect-mongodb-session')(session);
+const flash = require('connect-flash');
 
 const port = 3000;
 const router = require('./router/index');
@@ -24,6 +25,9 @@ app.use(express.json());
 // View engine
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
+
+//connect-flash
+app.use(flash());
 
 // save session
 const store = new mongodbStore({
@@ -66,6 +70,18 @@ app.use((req, res, next) => {
         .catch((error) => {
             console.log(error);
         });
+});
+
+// check role
+app.use((req, res, next) => {
+    if (req.staff) {
+        if (req.staff.role === 'admin') {
+            res.locals.role = 'admin';
+            return next();
+        }
+        res.locals.role = 'staff';
+    }
+    next();
 });
 
 // Init router

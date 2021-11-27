@@ -25,7 +25,7 @@
                 nhập</a>
             <%} else {%>
                 <div class="<%=path === 'auth/logout' ? 'navbar__auth active' : 'navbar__auth' %>">
-                    <form action="auth/logout" method="POST">
+                    <form action="/auth/logout" method="POST">
                         <input type="hidden" name="_csrf" value="<%=csrfToken%>">
                         <button type="submit">ĐĂNG XUẤT</button>
                     </form>
@@ -52,5 +52,20 @@
         <li class="mobile-nav__item">
             <a href="/covidDetail" class="<%= path === '/covid' ? 'active' : ''%>">Covid Detail</a>
         </li>
+        <% if (isAuthenticated) {%>
+            <li class="mobile-nav__item">
+                <form action="/auth/logout" method="POST">
+                    <input type="hidden" name="_csrf" value="<%=csrfToken%>">
+                    <button type="submit">ĐĂNG XUẤT</button>
+                </form>
+            </li>
+            <%} else {%>
+                <li class="mobile-nav__item">
+                    <form action="/auth/login" method="POST">
+                        <input type="hidden" name="_csrf" value="<%=csrfToken%>">
+                        <button type="submit">ĐĂNG NHẬP</button>
+                    </form>
+                </li>
+                <%}%>
     </ul>
 </nav>

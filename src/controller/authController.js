@@ -1,5 +1,4 @@
 const Staff = require('../models/staff');
-
 class AuthController {
     //GET auth/login
     getLogin(req, res, next) {
@@ -7,6 +6,7 @@ class AuthController {
             path: '/login',
             pageTitle: 'Login',
             isStarted: null,
+            errorMessage: null,
         });
     }
 
@@ -17,6 +17,14 @@ class AuthController {
 
         Staff.findOne({ userName: userName })
             .then((staff) => {
+                if (!staff) {
+                    return res.render('auth/login', {
+                        path: '/login',
+                        pageTitle: 'Login',
+                        isStarted: null,
+                        errorMessage: 'Tên đăng nhập hoặc mật khẩu sai',
+                    });
+                }
                 req.session.isLoggedIn = true;
                 req.session.staff = staff;
                 req.session.save((err) => {

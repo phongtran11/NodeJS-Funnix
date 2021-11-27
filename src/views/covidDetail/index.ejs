@@ -45,5 +45,22 @@
                 </form>
             </div>
         </div>
-        </div>
-        <%- include ('../includes/end.ejs')%>
+        <% if (role==='admin' ) { %>
+            <h3 class="covid-detail__title">Danh sách thông tin nhân viên</h3>
+            <div class="grid">
+                <% staffs.forEach(staff=> {%>
+                    <div class="covid-detail__wrapper">
+                        <h4>Tên nhân viên: <%= staff.name%>
+                        </h4>
+                        <span>Nhiệt độ: <%=staff.bodyTemperature[0].temperature%></span>
+                        <span>Tên vaccine mũi một: <%=staff.vaccineInfo[0].nameVaccine%></span>
+                        <span>Ngày tiêm: <%=staff.vaccineInfo[0].date%></span>
+                        <span>Tên vaccine mũi hai: <%=staff.vaccineInfo[1].nameVaccine%></span>
+                        <span>Ngày tiêm: <%=staff.vaccineInfo[1].date%></span>
+                        <a class="btn" href="/covidDetail/<%=staff._id%>">Xuất Trang PDF</a>
+                    </div>
+                    <%})%>
+            </div>
+            <%}%>
+                </div>
+                <%- include ('../includes/end.ejs')%>

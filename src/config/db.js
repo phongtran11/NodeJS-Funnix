@@ -29,6 +29,9 @@ Staff.findOne()
                 bodyTemperature: [],
                 vaccineInfo: [],
                 infectCovidInfo: [],
+                userName: 'staff',
+                password: 'staff',
+                role: 'staff',
             });
             newStaff.save();
         }
