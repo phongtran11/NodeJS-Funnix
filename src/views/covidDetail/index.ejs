@@ -54,9 +54,9 @@
                         </h4>
                         <span>Nhiệt độ: <%=staff.bodyTemperature[0].temperature%></span>
                         <span>Tên vaccine mũi một: <%=staff.vaccineInfo[0].nameVaccine%></span>
-                        <span>Ngày tiêm: <%=staff.vaccineInfo[0].date%></span>
+                        <span>Ngày tiêm: <%=staff.vaccineInfo[0].date.toLocaleString()%></span>
                         <span>Tên vaccine mũi hai: <%=staff.vaccineInfo[1].nameVaccine%></span>
-                        <span>Ngày tiêm: <%=staff.vaccineInfo[1].date%></span>
+                        <span>Ngày tiêm: <%=staff.vaccineInfo[1].date.toLocaleString()%></span>
                         <a class="btn" href="/covidDetail/<%=staff._id%>">Xuất Trang PDF</a>
                     </div>
                     <%})%>

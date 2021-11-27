@@ -1,0 +1,18 @@
+<%- include ('../includes/head.ejs')%>
+    <%- include ('../includes/navbar.ejs')%>
+        <div class="centered">
+            <div class="wrapper">
+                <form class="form-control" action="/manageStaff/staff" method="POST">
+                    <label for="choose-staff">Chọn nhân viên</label>
+                    <select name="staff" id="choose-staff">
+                        <% staffs.forEach(staff=> { %>
+                            <option value="<%=staff._id%>">
+                                <%=staff.name%>
+                            </option>
+                            <%})%>
+                    </select>
+                </form>
+            </div>
+        </div>
+        </div>
+        <%- include ('../includes/end.ejs')%>

@@ -87,9 +87,9 @@ class CovidDetailController {
                 doc.text('Tên nhân viên: ' + staff.name);
                 doc.text('Nhiệt độ: ' + staff.bodyTemperature[0].temperature);
                 doc.text('Vaccine mũi một: ' + staff.vaccineInfo[0].nameVaccine);
-                doc.text('Ngày tiêm: ' + staff.vaccineInfo[0].date);
+                doc.text('Ngày tiêm: ' + staff.vaccineInfo[0].date.toISOString());
                 doc.text('Vaccine mũi một: ' + staff.vaccineInfo[1].nameVaccine);
-                doc.text('Ngày tiêm: ' + staff.vaccineInfo[1].date);
+                doc.text('Ngày tiêm: ' + staff.vaccineInfo[1].date.toISOString());
                 doc.end();
             })
             .catch((error) => {

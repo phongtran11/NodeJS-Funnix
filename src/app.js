@@ -57,6 +57,7 @@ app.use((req, res, next) => {
 // Add staff in request
 app.use((req, res, next) => {
     if (!req.session.staff) {
+        res.locals.role = false;
         return next();
     }
     Staff.findById(req.session.staff._id)
@@ -65,23 +66,16 @@ app.use((req, res, next) => {
                 return next();
             }
             req.staff = staff;
+            if (staff.role === 'admin') {
+                res.locals.role = 'admin';
+                return next();
+            }
+            res.locals.role = 'staff';
             next();
         })
         .catch((error) => {
             console.log(error);
         });
-});
-
-// check role
-app.use((req, res, next) => {
-    if (req.staff) {
-        if (req.staff.role === 'admin') {
-            res.locals.role = 'admin';
-            return next();
-        }
-        res.locals.role = 'staff';
-    }
-    next();
 });
 
 // Init router

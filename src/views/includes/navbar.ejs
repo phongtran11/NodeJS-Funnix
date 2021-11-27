@@ -18,6 +18,11 @@
             <li class="navbar__item">
                 <a href="/covidDetail" class="<%= path === '/covid' ? 'active' : ''%>">Covid Detail</a>
             </li>
+            <% if (role==='admin' ) {%>
+                <li class="navbar__item">
+                    <a href="/manageStaff" class="<%= path === '/manageStaff' ? 'active' : ''%>">Manage Staff</a>
+                </li>
+                <%} %>
         </ul>
         <button class="side-menu-toggle">Menu</button>
         <% if (!isAuthenticated) { %>
@@ -52,20 +57,27 @@
         <li class="mobile-nav__item">
             <a href="/covidDetail" class="<%= path === '/covid' ? 'active' : ''%>">Covid Detail</a>
         </li>
-        <% if (isAuthenticated) {%>
+        <%if (role==='admin' ) {%>
+            <li>
             <li class="mobile-nav__item">
-                <form action="/auth/logout" method="POST">
-                    <input type="hidden" name="_csrf" value="<%=csrfToken%>">
-                    <button type="submit">ĐĂNG XUẤT</button>
-                </form>
+                <a href="/manageStaff" class="<%= path === '/manageStaff' ? 'active' : ''%>">Manage Staff</a>
             </li>
-            <%} else {%>
-                <li class="mobile-nav__item">
-                    <form action="/auth/login" method="POST">
-                        <input type="hidden" name="_csrf" value="<%=csrfToken%>">
-                        <button type="submit">ĐĂNG NHẬP</button>
-                    </form>
-                </li>
-                <%}%>
+            </li>
+            <%}%>
+                <% if (isAuthenticated) {%>
+                    <li class="mobile-nav__item">
+                        <form action="/auth/logout" method="POST">
+                            <input type="hidden" name="_csrf" value="<%=csrfToken%>">
+                            <button type="submit">ĐĂNG XUẤT</button>
+                        </form>
+                    </li>
+                    <%} else {%>
+                        <li class="mobile-nav__item">
+                            <form action="/auth/login" method="POST">
+                                <input type="hidden" name="_csrf" value="<%=csrfToken%>">
+                                <button type="submit">ĐĂNG NHẬP</button>
+                            </form>
+                        </li>
+                        <%}%>
     </ul>
 </nav>
