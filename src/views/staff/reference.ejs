@@ -3,42 +3,57 @@
         <div class="grid">
             <div class="referenceStaff__wrapper">
                 <h3 class="referenceStaff__title">Danh sách lượt làm</h3>
-                <table class="referenceStaff__table">
-                    <tr>
-                        <th colspan="2">Ngày</th>
-                        <th colspan="2">Giờ bắt đầu</th>
-                        <th colspan="2">Giờ kết thúc</th>
-                        <th colspan="2">Nơi làm việc</th>
-                        <th colspan="2">Giờ làm thêm</th>
-                    </tr>
-                    <% staff.workTimes.forEach(workTime=>{%>
-                        <tr>
-                            <td colspan="2">
-                                <%=workTime.startTime.getDate()%>
-                            </td>
-                            <td colspan="2">
-                                <%=workTime.startTime.getHours()%>:<%=workTime.startTime.getMinutes()%>h
-                            </td>
-                            <td colspan="2">
-                                <%=workTime.endTime.getHours()%>:<%=workTime.endTime.getMinutes()%>h
-                            </td>
-                            <td colspan="2">
-                                <%= workTime.workPlace==='home' ? ' Nhà' : workTime.workPlace==='company' ? ' Công ty'
-                                    : ' Khách Hàng' %>
-                            </td>
-                            <td colspan="2">
-                                <% const hoursEnd=workTime.endTime.getHours(); const
-                                    hoursStart=workTime.startTime.getHours(); const totalTimeWork=(hoursEnd* 60
-                                    +workTime.endTime.getMinutes()) - (hoursStart*60 + workTime.startTime.getMinutes());
-                                    %>
-                                    <%= totalTimeWork/60 - 8 < 0 ? 0 : (totalTimeWork/60 - 8).toFixed(2) %>
-                            </td>
-                        </tr>
-                        <% } )%>
-                </table>
-                <p class="referenceStaff__article">
-                    Tổng số giờ làm lần này <%=lastTimeWorked%>
-                </p>
+                <% if (role==='admin' ) { %>
+                    <p>Id quản lý: <%=staff._id%>
+                    </p>
+                    <p>Tên quản lý: <%=staff.name%>
+                    </p>
+                    <%}%>
+                        <table class="referenceStaff__table">
+                            <tr>
+                                <th colspan="2">Ngày</th>
+                                <th colspan="2">Giờ bắt đầu</th>
+                                <th colspan="2">Giờ kết thúc</th>
+                                <th colspan="2">Nơi làm việc</th>
+                                <th colspan="2">Giờ làm thêm</th>
+                            </tr>
+                            <% workTimes.forEach(workTime=>{%>
+                                <tr>
+                                    <td colspan="2">
+                                        <%=workTime.startTime.getDate()%>
+                                    </td>
+                                    <td colspan="2">
+                                        <%=workTime.startTime.getHours()%>:<%=workTime.startTime.getMinutes()%>h
+                                    </td>
+                                    <td colspan="2">
+                                        <%=workTime.endTime.getHours()%>:<%=workTime.endTime.getMinutes()%>h
+                                    </td>
+                                    <td colspan="2">
+                                        <%= workTime.workPlace==='home' ? ' Nhà' : workTime.workPlace==='company'
+                                            ? ' Công ty' : ' Khách Hàng' %>
+                                    </td>
+                                    <td colspan="2">
+                                        <% const hoursEnd=workTime.endTime.getHours(); const
+                                            hoursStart=workTime.startTime.getHours(); const totalTimeWork=(hoursEnd* 60
+                                            +workTime.endTime.getMinutes()) - (hoursStart*60 +
+                                            workTime.startTime.getMinutes()); %>
+                                            <%= totalTimeWork/60 - 8 < 0 ? 0 : (totalTimeWork/60 - 8).toFixed(2) %>
+                                    </td>
+                                </tr>
+                                <% } )%>
+                        </table>
+                        <p class="referenceStaff__article">
+                            Tổng số giờ làm lần này <%=lastTimeWorked%>
+                        </p>
+                        <div class="grid">
+                            <p class="referenceStaff__article">Số dòng giờ làm hiển thị</p>
+                            <div class="grid align-center">
+                                <a class="pagination" href="?rowPerPage=20">20 dòng</a>
+                                <a class="pagination" href="?rowPerPage=40">40 dòng</a>
+                            </div>
+
+                        </div>
+
             </div>
             <div class="referenceStaff__wrapper">
                 <h3 class="referenceStaff__title">Danh sách đăng ký nghỉ phép</h3>
@@ -84,7 +99,7 @@
                     <input type="hidden" name="_csrf" value="<%=csrfToken%>">
                 </form>
                 <p class="referenceStaff__salary">
-                    <%= salary %>
+                    <%= salary < 0 ? 3000000 : salary %>
                 </p>
             </div>
         </div>

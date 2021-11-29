@@ -52,3 +52,9 @@ if ($('.form-select-month')) {
         $('.form-select-month').submit();
     });
 }
+
+// if ($('.form-manage')) {
+//     $('#choose-staff').on('change', function () {
+//         $('.form-manage').submit();
+//     });
+// }

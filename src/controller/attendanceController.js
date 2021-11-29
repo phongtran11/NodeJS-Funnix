@@ -3,10 +3,21 @@ const Methods = require('../utils/Methods');
 class AttendanceController {
     // GET /
     getIndex(req, res) {
+        const presentMonth = new Date().getMonth();
+        const monthConfirmed = req.staff.isConfirm.filter((item) => {
+            return item.month === presentMonth;
+        });
+        let confirmed;
+        if (monthConfirmed[0]?.month === presentMonth) {
+            confirmed = true;
+        }
+        confirmed = false;
+
         res.render('attendance/index', {
             path: '/attendance',
             pageTitle: 'Attendance',
             isStarted: Methods.CheckIsStarted(req.staff),
+            confirmed,
         });
     }
 

@@ -41,6 +41,12 @@ const Staff = new Schema({
             endTime: { type: Date },
         },
     ],
+    isConfirm: [
+        {
+            confirmed: { type: Boolean },
+            month: { type: Number },
+        },
+    ],
     leaveInfoList: [
         {
             daysLeave: { type: String },

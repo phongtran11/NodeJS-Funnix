@@ -38,8 +38,9 @@ class AuthController {
 
     // POST auth/logout
     postLogout(req, res, next) {
-        req.session.destroy((error) => {
-            return res.redirect('/');
+        req.session.destroy((err) => {
+            console.log(err);
+            res.redirect('/');
         });
     }
 }

@@ -22,6 +22,7 @@ html {
 
 body {
     font-family: 'Open Sans', sans-serif;
+    font-display: auto;
     font-size: 1.4rem;
 }
 
@@ -30,6 +31,20 @@ body {
     flex-wrap: wrap;
     justify-content: space-around;
     align-items: stretch;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.pagination {
+    text-decoration: none;
+    color: var(--bs-black);
+    margin-right: 1rem;
+}
+
+.pagination:hover {
+    opacity: 0.8;
 }
 
 .app {
@@ -79,6 +94,12 @@ body {
     padding: 0.5rem;
     background: #007bff;
     border: 1px solid #007bff;
+}
+
+.btn-danger {
+    cursor: pointer;
+    border: none;
+    background: rgba(245, 153, 153, 0.664);
 }
 
 .btn:hover {
@@ -138,6 +159,7 @@ body {
     resize: none;
     height: 5rem;
     font-family: 'Open Sans', sans-serif;
+    font-display: auto;
 }
 
 .navbar {
@@ -197,6 +219,7 @@ body {
     font-weight: 600;
     color: var(--bs-black);
     font-family: 'Open Sans', sans-serif;
+    font-display: auto;
     cursor: pointer;
 }
 
@@ -505,6 +528,7 @@ body {
     text-align: center;
     font-weight: 600;
     font-family: 'Open Sans', sans-serif;
+    font-display: auto;
 }
 
 .covid-detail__wrapper button:hover {

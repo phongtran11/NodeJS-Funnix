@@ -1,5 +1,4 @@
 const isManage = (req, res, next) => {
-    console.log(req.staff.role);
     if (req.staff.role === 'admin') {
         return next();
     }

@@ -1,4 +1,5 @@
 const Methods = require('../utils/methods');
+const deleteFile = require('../utils/fileHelper');
 class StaffController {
     //  GET /staff/infoStaff
     getInfoStaff(req, res) {
@@ -12,7 +13,8 @@ class StaffController {
 
     // POST /staff/edit
     postEditStaff(req, res) {
-        req.staff.image = req.body.image;
+        deleteFile(req.staff.image);
+        req.staff.image = req.file.path;
         req.staff
             .save()
             .then(() =>
@@ -33,6 +35,19 @@ class StaffController {
         const day = Methods.getDayLeave(req.staff, Methods.calculateTimeWorked(req.staff));
         const salary = Methods.getSalary(req.body.month, req.staff);
 
+        let workTimes = [];
+        if (req.query.rowPerPage) {
+            req.staff.workTimes.length < +req.query.rowPerPage
+                ? (req.query.rowPerPage = +req.staff.workTimes.length)
+                : +req.query.rowPerPage;
+
+            for (let i = 0; i < +req.query.rowPerPage; i++) {
+                workTimes.push(req.staff.workTimes[i]);
+            }
+        } else {
+            workTimes = req.staff.workTimes;
+        }
+
         res.render('staff/reference', {
             path: '/staff/reference',
             pageTitle: 'Reference staff',
@@ -42,6 +57,7 @@ class StaffController {
             staff: req.staff, // staff
             day, // arry of info annual leave
             salary,
+            workTimes, //list work Time
         });
     }
 
