@@ -105,6 +105,6 @@ router(app);
 // app.listen(port, () => {
 //     console.log(`App running at http://localhost:${port}`);
 // });
-app.listen(process.env.PORT || 8080, '0.0.0.0', () => {
+app.listen(process.env.PORT || 8080, () => {
     console.log(`Server is running.`);
 });
