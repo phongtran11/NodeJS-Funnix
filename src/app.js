@@ -102,9 +102,6 @@ app.use((req, res, next) => {
 // Init router
 router(app);
 
-// app.listen(port, () => {
-//     console.log(`App running at http://localhost:${port}`);
-// });
 app.listen(process.env.PORT || 3001, () => {
     console.log(`Server is running.`);
 });
