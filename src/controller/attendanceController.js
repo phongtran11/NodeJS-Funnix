@@ -1,4 +1,4 @@
-const Methods = require('../utils/Methods');
+const Methods = require('../utils/methods');
 
 class AttendanceController {
     // GET /
