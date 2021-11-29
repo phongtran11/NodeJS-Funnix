@@ -8,9 +8,9 @@ const path = require('path');
 const multer = require('multer');
 
 const port = 3000;
-const router = require('./router/index');
-const db = require('./config/db');
-const Staff = require('./models/staff');
+const router = require('./src/router/index');
+const db = require('./src/config/db');
+const Staff = require('./src/models/staff');
 
 const MONGODB_URI = 'mongodb+srv://phong:020899Pi@cluster0.eirsr.mongodb.net/employee';
 
@@ -23,7 +23,7 @@ app.use(express.json());
 
 // View engine
 app.set('view engine', 'ejs');
-app.set('views', __dirname + '/views');
+app.set('views', __dirname + '/src/views');
 
 const fileStorage = multer.diskStorage({
     destination: function (req, file, cb) {
