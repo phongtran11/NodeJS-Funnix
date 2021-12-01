@@ -28,6 +28,7 @@ class AttendanceController {
             pageTitle: 'Attendance',
             staff: req.staff,
             isStarted: Methods.CheckIsStarted(req.staff),
+            confirmed: false,
         });
     }
 
@@ -58,6 +59,7 @@ class AttendanceController {
             lastStart: Methods.getLastStart(req.staff),
             isStarted: Methods.CheckIsStarted(req.staff),
             staff: req.staff,
+            confirmed: false,
         });
     }
 
@@ -87,6 +89,7 @@ class AttendanceController {
             workedInDay: Methods.calculateTimeWorked(req.staff),
             isStarted: Methods.CheckIsStarted(req.staff),
             staff: req.staff,
+            confirmed: false,
         });
     }
 
@@ -96,6 +99,7 @@ class AttendanceController {
             path: '/attendance',
             pageTitle: 'Attendance',
             staff: req.staff,
+            confirmed: false,
         });
     }
 

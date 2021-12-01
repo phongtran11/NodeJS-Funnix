@@ -35,19 +35,23 @@ class StaffController {
         const day = Methods.getDayLeave(req.staff, Methods.calculateTimeWorked(req.staff));
         const salary = Methods.getSalary(req.body.month, req.staff);
 
-        let workTimes = [];
-        if (req.query.rowPerPage) {
-            req.staff.workTimes.length < +req.query.rowPerPage
-                ? (req.query.rowPerPage = +req.staff.workTimes.length)
-                : +req.query.rowPerPage;
+        let page = +req.query.page || 1;
+        let rowPerPage = +req.query.rowPerPage || 2;
+        let workTimesInMonth = req.staff.workTimes.filter((workTime) => {
+            return workTime.startTime.getMonth() == new Date().getMonth();
+        });
+        const workTimes = [];
 
-            for (let i = 0; i < +req.query.rowPerPage; i++) {
-                workTimes.push(req.staff.workTimes[i]);
+        if (rowPerPage > workTimesInMonth.length) {
+            rowPerPage = workTimesInMonth.length;
+            for (let i = 0; i < rowPerPage; i++) {
+                workTimes.push(workTimesInMonth[i]);
             }
         } else {
-            workTimes = req.staff.workTimes;
+            for (let i = 0; i < rowPerPage; i++) {
+                workTimes.push(workTimesInMonth[i]);
+            }
         }
-
         res.render('staff/reference', {
             path: '/staff/reference',
             pageTitle: 'Reference staff',
@@ -58,6 +62,12 @@ class StaffController {
             day, // arry of info annual leave
             salary,
             workTimes, //list work Time
+            currentPage: page,
+            hasNextPage: rowPerPage * page < workTimes.length,
+            nextPage: page + 1,
+            hasPrevPage: page > 1,
+            prevPage: page - 1,
+            lastPage: Math.ceil(workTimes.length / rowPerPage),
         });
     }
 

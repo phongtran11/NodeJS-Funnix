@@ -20,23 +20,23 @@
                             <% workTimes.forEach(workTime=>{%>
                                 <tr>
                                     <td colspan="2">
-                                        <%=workTime.startTime.getDate()%>
+                                        <%=workTime.startTime?.getDate()%>
                                     </td>
                                     <td colspan="2">
-                                        <%=workTime.startTime.getHours()%>:<%=workTime.startTime.getMinutes()%>h
+                                        <%=workTime.startTime?.getHours()%>:<%=workTime.startTime?.getMinutes()%>h
                                     </td>
                                     <td colspan="2">
-                                        <%=workTime.endTime.getHours()%>:<%=workTime.endTime.getMinutes()%>h
+                                        <%=workTime.endTime?.getHours()%>:<%=workTime.endTime?.getMinutes()%>h
                                     </td>
                                     <td colspan="2">
                                         <%= workTime.workPlace==='home' ? ' Nhà' : workTime.workPlace==='company'
                                             ? ' Công ty' : ' Khách Hàng' %>
                                     </td>
                                     <td colspan="2">
-                                        <% const hoursEnd=workTime.endTime.getHours(); const
-                                            hoursStart=workTime.startTime.getHours(); const totalTimeWork=(hoursEnd* 60
-                                            +workTime.endTime.getMinutes()) - (hoursStart*60 +
-                                            workTime.startTime.getMinutes()); %>
+                                        <% const hoursEnd=workTime.endTime?.getHours(); const
+                                            hoursStart=workTime.startTime?.getHours(); const totalTimeWork=(hoursEnd* 60
+                                            +workTime.endTime?.getMinutes()) - (hoursStart*60 +
+                                            workTime.startTime?.getMinutes()); %>
                                             <%= totalTimeWork/60 - 8 < 0 ? 0 : (totalTimeWork/60 - 8).toFixed(2) %>
                                     </td>
                                 </tr>
@@ -45,13 +45,36 @@
                         <p class="referenceStaff__article">
                             Tổng số giờ làm lần này <%=lastTimeWorked%>
                         </p>
+                        <div class=paginate>
+                            <% if (currentPage !==1 && prevPage !==1 ) {%>
+                                <a class="paginate-link" href="?page=1"> page 1</a>
+                                <%}%>
+                                    <% if (hasPrevPage) {%>
+                                        <a class="paginate-link" href="?page=<%=prevPage%>">
+                                            prev <%=prevPage%>
+                                        </a>
+                                        <%}%>
+                                            <a class="paginate-link paginate-link--active"
+                                                href="?page=<%=currentPage%>">
+                                                curr <%=currentPage%>
+                                            </a>
+                                            <% if (hasNextPage) {%>
+                                                <a class="paginate-link" href="?page=<%=nextPage%>">
+                                                    next <%=nextPage%>
+                                                </a>
+                                                <%}%>
+                                                    <% if (lastPage !==currentPage && nextPage !==lastPage ) {%>
+                                                        <a class="paginate-link" href="?page=<%=lastPage%>">
+                                                            last <%=lastPage%>
+                                                        </a>
+                                                        <%}%>
+                        </div>
                         <div class="grid">
                             <p class="referenceStaff__article">Số dòng giờ làm hiển thị</p>
                             <div class="grid align-center">
                                 <a class="pagination" href="?rowPerPage=20">20 dòng</a>
                                 <a class="pagination" href="?rowPerPage=40">40 dòng</a>
                             </div>
-
                         </div>
 
             </div>

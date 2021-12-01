@@ -78,6 +78,7 @@ app.use((req, res, next) => {
 // Add staff in request
 app.use((req, res, next) => {
     if (!req.session.staff) {
+        res.locals.loggedIn = false;
         res.locals.role = false;
         return next();
     }
@@ -87,6 +88,8 @@ app.use((req, res, next) => {
                 return next();
             }
             req.staff = staff;
+            res.locals.loggedIn = true;
+            res.locals.auth = staff;
             if (staff.role === 'admin') {
                 res.locals.role = 'admin';
                 return next();
@@ -102,6 +105,6 @@ app.use((req, res, next) => {
 // Init router
 router(app);
 
-app.listen(process.env.PORT || 3001, () => {
+app.listen(process.env.PORT || 3000, () => {
     console.log(`Server is running.`);
 });

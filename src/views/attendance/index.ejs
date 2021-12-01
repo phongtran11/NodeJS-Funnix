@@ -2,7 +2,7 @@
     <%- include ('../includes/navbar.ejs')%>
         <%-include ('../includes/attendanceButton.ejs', {confirmed})%>
             <div class="centered">
-                <% if (!confirmed) { %>
+                <% if (confirmed) { %>
                     <h2 class="index__title">Tháng này đã được tính lương </h2>
                     <%}else{%>
                         <% if (isStarted) { %>

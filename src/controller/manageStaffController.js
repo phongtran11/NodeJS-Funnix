@@ -27,9 +27,13 @@ class ManageStaffController {
             .then((staffs) => {
                 Staff.findById(req.body.staff)
                     .then((staff) => {
-                        const workTimes = staff.workTimes.filter((workTime) => {
-                            return staff.workTimes[0].startTime.getMonth() === +req.body.month;
-                        });
+                        let workTimes;
+                        if (req.body.month) {
+                            workTimes = staff.workTimes.filter((workTime) => {
+                                return workTime.startTime.getMonth() === +req.body.month;
+                            });
+                        }
+
                         if (staff.workTimes.length === 0) {
                             res.render('manage/staff', {
                                 path: '/manageStaff',

@@ -183,7 +183,7 @@ body {
 }
 
 .navbar__item {
-    margin: 0 1rem;
+    margin: 0 0.5rem;
     display: block;
 }
 
@@ -213,6 +213,8 @@ body {
 }
 
 .navbar__auth button {
+    padding: 0.6rem 1rem;
+    display: inline-block;
     border: none;
     background: none;
     font-size: 1.4rem;
@@ -223,15 +225,24 @@ body {
     cursor: pointer;
 }
 
-.navbar__auth:hover button {
+.navbar__auth button:hover {
+    background: var(--bs-blue);
     border-radius: 0.4rem;
-    background-color: var(--bs-blue);
 }
 
-.navbar__auth.active,
-.navbar__auth:hover {
+.navbar__auth-name {
+    font-size: 1.2rem;
+}
+
+.navbar__auth-role {
+    display: inline-block;
     border-radius: 0.4rem;
-    background-color: var(--bs-blue);
+    background: var(--bs-blue-transparent);
+    font-size: 1rem;
+}
+
+.navbar__auth-info {
+    margin-right: 1.2rem;
 }
 
 .black-drop {
@@ -341,6 +352,11 @@ body {
 .btn-custom:hover {
     cursor: pointer;
     transform: translateY(-10%);
+}
+
+.login-btn {
+    text-decoration: none;
+    color: var(--bs-black);
 }
 
 .form-start__wrapper {
@@ -557,6 +573,27 @@ footer {
 
 footer h3 {
     line-height: 3.2rem;
+}
+
+.paginate {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.paginate-link {
+    display: inline-block;
+    margin-right: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: white;
+    color: var(--bs-black);
+    text-decoration: none;
+}
+
+.paginate-link:hover,
+.paginate-link--active {
+    color: white;
+    background: var(--bs-blue);
 }
 
 @media screen and (max-width: 767px) {

@@ -2,7 +2,7 @@
     <div class="attendace-form">
         <form action="/attendance/start" method="GET">
 
-            <button <%=isStarted ? 'disabled' : !confirmed? 'disabled' : isStarted===null ? '' : '' %>
+            <button <%=isStarted ? 'disabled' : confirmed ? 'disabled' : isStarted===null ? '' : '' %>
                 class="btn-custom" type="submit">Điểm Danh
             </button>
             <input type="hidden" name="mode" value="start">
@@ -17,6 +17,7 @@
         </form>
         <form action="/attendance/leaveForm" method="GET">
             <input type="hidden" name="_csrf" value="<%=csrfToken%>">
-            <button <%=confirmed ? '' : 'disabled' %> class="btn-custom" type="submit">Nghỉ Phép</button>
+            <button <%=confirmed ? 'disabled' : '' %> class="btn-custom" type="submit">Nghỉ
+                Phép</button>
         </form>
     </div>
